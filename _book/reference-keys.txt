@@ -1,5 +1,6 @@
 prerequisites
 functions
+vectors
 indexes
 what-are-functions
 sequences

@@ -1,16 +1,75 @@
 # Functions {#functions}
 
+## Vectors
+
+Vectors are containers information of similar type. You can think of them as having $1\ * \ n$ cells where $n$ is *any* positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are **numeric**, **character**, and **logical** (**TRUE**/**FALSE**).
+
+**Rule 1: Vectors only contain one type of data.\
+Rule 2: Vectors are always** $1xn$ **dimensional,** $1xn=n$ where $n$ is the `length` of the vector. **\
+Rule 3: Vectors don't always have names, but should if it makes sense.**
+
+**Functions** are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.
+
+**Rule 4: Functions have inputs, outputs, and a body.** A function can have multiple outputs, but given a particular set of inputs, the solution should never change assuming you are not developing a function with randomness built in.
+
+R has a built-in [constant](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html) called `letters`. This means that no matter where you are writing R, `letters` will be available to you. We see that `letters` is a **character** **vector** in our program below, and use the composition of functions to create a program that describes `letters`.
+
+```{r}
+print(letters)
+```
+
+Next, we can use some functions which take in pretty much any object that exists in R and spits back information regarding the `letters` data.
+
+```{r}
+print_information <- function(x) {
+  
+  variable_name = deparse1(substitute(x))
+  
+  length_x = length(x)
+  typeof_x <- typeof(x)
+  is_vec_x <- is.vector(x)
+  
+  meta_list <- list(
+    length = length_x, 
+    type = typeof_x, 
+    is_vector = is_vec_x
+  )
+  
+  cli::cli_alert('Information about {variable_name}')
+  
+  cli::cli_alert_info("{variable_name} is a 1x{length_x} dimensional")
+  cli::cli_alert_info("")
+  
+  purrr::iwalk(meta_list, function(x, index) {
+    cli::cli_alert_info(glue::glue('{index} {x} is type {typeof(x)}'))
+  })
+  
+  return(meta_list)
+}
+
+cli::cli_alert_info('Execute print_information')
+output <- print_information(mtcars)
+cli::cli_alert_success('Execute print_information complete')
+
+print(output)
+
+```
+
+We can take this information and put it in a `list`. A list holds whatever we want to put inside it. The left side is the `name` that the object will get within the list, the right side the object itself.
+
+```{r}
+
+```
+
 ## Indexes
 
-For example, consider the values $1, 2, … n$. Programmers will often talk about [indexing](https://rspatial.org/intr/4-indexing.html). An index in R starts at `1` and extends through the integers until `n` equals the number of items in the list, or vector, or columns of a table, etc.. So suppose we have the vector `(2, 4, 5)`, we can take the value at location or index `2`, and get `4` back. Indexes are useful, because we often subset or filter our data based on the task at hand. The function `seq` generates a sequence of integers between the `from` and `to` argument. 
+Consider the values $1, 2, … n$, where $n$ is any positive integer. [Indexing](https://rspatial.org/intr/4-indexing.html) is just our way of specifying the location of something. An index in R always starts at `1` and extends through the integers until `n` equals the number of items we are counting.
 
 ```{r}
 seq(from = 1, to = 10)
 ```
 
-What is special about starting the sequence at `1` is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (`TRUE`/`FALSE`), numeric (`1.1`, `2`), integer (`1`, `4`), or character (`"a"`, `"cat"`), there is _always_ an integer associated with it's position in the object.
-
-For example, R has a built-in `constant` called `letters`. This means that no matter where you are writing R, `letters` will be available to you without opening up a library with the value. We see that the letters vector contains 26 cells, which we can access with the integer vector we mentioned above. 
+What is special about starting the sequence at `1` is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (`TRUE`/`FALSE`), numeric (`1.1`, `2`), integer (`1`, `4`), or character (`"a"`, `"cat"`), there is *always* an integer associated with it's position in the object.
 
 ```{r}
 message('Full letters vector')
@@ -20,9 +79,6 @@ letters[seq(from = 1, to = 10)]
 ```
 
 ## What are Functions?
-
-Functions are containers where anything or nothing can happen. They allow for generalization of complicated ideas and routines that we wish to repeat many times. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function.
-
 
 We can assign this **integer vector** to a **variable** called `data` . When we assign something to a variable, we can take it with us to use in other parts of our program. We will use a built in constant that R provides called `LETTERS` which is a **character vector** containing the 26 letters of the alphabet capitalized.
 

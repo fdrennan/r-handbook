@@ -140,9 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
 <li class="chapter" data-level="2" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>2</b> Functions</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#indexes"><i class="fa fa-check"></i><b>2.1</b> Indexes</a></li>
-<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#what-are-functions"><i class="fa fa-check"></i><b>2.2</b> What are Functions?</a></li>
-<li class="chapter" data-level="2.3" data-path="functions.html"><a href="functions.html#sequences"><i class="fa fa-check"></i><b>2.3</b> Sequences</a></li>
+<li class="chapter" data-level="2.1" data-path="functions.html"><a href="functions.html#vectors"><i class="fa fa-check"></i><b>2.1</b> Vectors</a></li>
+<li class="chapter" data-level="2.2" data-path="functions.html"><a href="functions.html#indexes"><i class="fa fa-check"></i><b>2.2</b> Indexes</a></li>
+<li class="chapter" data-level="2.3" data-path="functions.html"><a href="functions.html#what-are-functions"><i class="fa fa-check"></i><b>2.3</b> What are Functions?</a></li>
+<li class="chapter" data-level="2.4" data-path="functions.html"><a href="functions.html#sequences"><i class="fa fa-check"></i><b>2.4</b> Sequences</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
@@ -175,45 +176,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="functions" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Functions</h1>
-<div id="indexes" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Indexes</h2>
-<p>For example, consider the values <span class="math inline">\(1, 2, … n\)</span>. Programmers will often talk about <a href="https://rspatial.org/intr/4-indexing.html">indexing</a>. An index in R starts at <code>1</code> and extends through the integers until <code>n</code> equals the number of items in the list, or vector, or columns of a table, etc.. So suppose we have the vector <code>(2, 4, 5)</code>, we can take the value at location or index <code>2</code>, and get <code>4</code> back. Indexes are useful, because we often subset or filter our data based on the task at hand. The function <code>seq</code> generates a sequence of integers between the <code>from</code> and <code>to</code> argument.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="functions.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<p>What is special about starting the sequence at <code>1</code> is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (<code>TRUE</code>/<code>FALSE</code>), numeric (<code>1.1</code>, <code>2</code>), integer (<code>1</code>, <code>4</code>), or character (<code>"a"</code>, <code>"cat"</code>), there is <em>always</em> an integer associated with it’s position in the object.</p>
-<p>For example, R has a built-in <code>constant</code> called <code>letters</code>. This means that no matter where you are writing R, <code>letters</code> will be available to you without opening up a library with the value. We see that the letters vector contains 26 cells, which we can access with the integer vector we mentioned above.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="functions.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&#39;Full letters vector&#39;</span>)</span></code></pre></div>
-<pre><code>## Full letters vector</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="functions.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(letters)</span></code></pre></div>
+<div id="vectors" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Vectors</h2>
+<p>Vectors are containers information of similar type. You can think of them as having <span class="math inline">\(1\ * \ n\)</span> cells where <span class="math inline">\(n\)</span> is <em>any</em> positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are <strong>numeric</strong>, <strong>character</strong>, and <strong>logical</strong> (<strong>TRUE</strong>/<strong>FALSE</strong>).</p>
+<p><strong>Rule 1: Vectors only contain one type of data.<br />
+Rule 2: Vectors are always</strong> <span class="math inline">\(1xn\)</span> <strong>dimensional,</strong> <span class="math inline">\(1xn=n\)</span> where <span class="math inline">\(n\)</span> is the <code>length</code> of the vector. <strong><br />
+Rule 3: Vectors don’t always have names, but should if it makes sense.</strong></p>
+<p><strong>Functions</strong> are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it’s something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.</p>
+<p><strong>Rule 4: Functions have inputs, outputs, and a body.</strong> A function can have multiple outputs, but given a particular set of inputs, the solution should never change assuming you are not developing a function with randomness built in.</p>
+<p>R has a built-in <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html">constant</a> called <code>letters</code>. This means that no matter where you are writing R, <code>letters</code> will be available to you. We see that <code>letters</code> is a <strong>character</strong> <strong>vector</strong> in our program below, and use the composition of functions to create a program that describes <code>letters</code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="functions.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(letters)</span></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
 ## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="functions.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&#39;Selecting the first 10 values&#39;</span>)</span></code></pre></div>
+<p>Next, we can use some functions which take in pretty much any object that exists in R and spits back information regarding the <code>letters</code> data.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="functions.html#cb4-1" aria-hidden="true" tabindex="-1"></a>print_information <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb4-2"><a href="functions.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-3"><a href="functions.html#cb4-3" aria-hidden="true" tabindex="-1"></a>  variable_name <span class="ot">=</span> <span class="fu">deparse1</span>(<span class="fu">substitute</span>(x))</span>
+<span id="cb4-4"><a href="functions.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-5"><a href="functions.html#cb4-5" aria-hidden="true" tabindex="-1"></a>  length_x <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb4-6"><a href="functions.html#cb4-6" aria-hidden="true" tabindex="-1"></a>  typeof_x <span class="ot">&lt;-</span> <span class="fu">typeof</span>(x)</span>
+<span id="cb4-7"><a href="functions.html#cb4-7" aria-hidden="true" tabindex="-1"></a>  is_vec_x <span class="ot">&lt;-</span> <span class="fu">is.vector</span>(x)</span>
+<span id="cb4-8"><a href="functions.html#cb4-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-9"><a href="functions.html#cb4-9" aria-hidden="true" tabindex="-1"></a>  meta_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb4-10"><a href="functions.html#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">length =</span> length_x, </span>
+<span id="cb4-11"><a href="functions.html#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> typeof_x, </span>
+<span id="cb4-12"><a href="functions.html#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_vector =</span> is_vec_x</span>
+<span id="cb4-13"><a href="functions.html#cb4-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-14"><a href="functions.html#cb4-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-15"><a href="functions.html#cb4-15" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert</span>(<span class="st">&#39;Information about {variable_name}&#39;</span>)</span>
+<span id="cb4-16"><a href="functions.html#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-17"><a href="functions.html#cb4-17" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;{variable_name} is a 1x{length_x} dimensional&quot;</span>)</span>
+<span id="cb4-18"><a href="functions.html#cb4-18" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb4-19"><a href="functions.html#cb4-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-20"><a href="functions.html#cb4-20" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">iwalk</span>(meta_list, <span class="cf">function</span>(x, index) {</span>
+<span id="cb4-21"><a href="functions.html#cb4-21" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;{index} {x} is type {typeof(x)}&#39;</span>))</span>
+<span id="cb4-22"><a href="functions.html#cb4-22" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb4-23"><a href="functions.html#cb4-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb4-24"><a href="functions.html#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(meta_list)</span>
+<span id="cb4-25"><a href="functions.html#cb4-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-26"><a href="functions.html#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="functions.html#cb4-27" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&#39;Execute print_information&#39;</span>)</span></code></pre></div>
+<pre><code>## i Execute print_information</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="functions.html#cb6-1" aria-hidden="true" tabindex="-1"></a>output <span class="ot">&lt;-</span> <span class="fu">print_information</span>(mtcars)</span></code></pre></div>
+<pre><code>## &gt; Information about mtcars</code></pre>
+<pre><code>## i mtcars is a 1x11 dimensional</code></pre>
+<pre><code>## i</code></pre>
+<pre><code>## i length 11 is type integer</code></pre>
+<pre><code>## i type list is type character</code></pre>
+<pre><code>## i is_vector FALSE is type logical</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="functions.html#cb13-1" aria-hidden="true" tabindex="-1"></a>cli<span class="sc">::</span><span class="fu">cli_alert_success</span>(<span class="st">&#39;Execute print_information complete&#39;</span>)</span></code></pre></div>
+<pre><code>## v Execute print_information complete</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="functions.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(output)</span></code></pre></div>
+<pre><code>## $length
+## [1] 11
+## 
+## $type
+## [1] &quot;list&quot;
+## 
+## $is_vector
+## [1] FALSE</code></pre>
+<p>We can take this information and put it in a <code>list</code>. A list holds whatever we want to put inside it. The left side is the <code>name</code> that the object will get within the list, the right side the object itself.</p>
+</div>
+<div id="indexes" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Indexes</h2>
+<p>Consider the values <span class="math inline">\(1, 2, … n\)</span>, where <span class="math inline">\(n\)</span> is any positive integer. <a href="https://rspatial.org/intr/4-indexing.html">Indexing</a> is just our way of specifying the location of something. An index in R always starts at <code>1</code> and extends through the integers until <code>n</code> equals the number of items we are counting.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="functions.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>What is special about starting the sequence at <code>1</code> is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (<code>TRUE</code>/<code>FALSE</code>), numeric (<code>1.1</code>, <code>2</code>), integer (<code>1</code>, <code>4</code>), or character (<code>"a"</code>, <code>"cat"</code>), there is <em>always</em> an integer associated with it’s position in the object.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="functions.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&#39;Full letters vector&#39;</span>)</span></code></pre></div>
+<pre><code>## Full letters vector</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="functions.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(letters)</span></code></pre></div>
+<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
+## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="functions.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&#39;Selecting the first 10 values&#39;</span>)</span></code></pre></div>
 <pre><code>## Selecting the first 10 values</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="functions.html#cb10-1" aria-hidden="true" tabindex="-1"></a>letters[<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="functions.html#cb25-1" aria-hidden="true" tabindex="-1"></a>letters[<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="dv">10</span>)]</span></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot;</code></pre>
 </div>
-<div id="what-are-functions" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> What are Functions?</h2>
-<p>Functions are containers where anything or nothing can happen. They allow for generalization of complicated ideas and routines that we wish to repeat many times. A function may have an input, but no output. It may have an output, but no input, both or none. If it’s something you need to do repeatedly, or containing code makes your program easier to read, then write a function.</p>
+<div id="what-are-functions" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> What are Functions?</h2>
 <p>We can assign this <strong>integer vector</strong> to a <strong>variable</strong> called <code>data</code> . When we assign something to a variable, we can take it with us to use in other parts of our program. We will use a built in constant that R provides called <code>LETTERS</code> which is a <strong>character vector</strong> containing the 26 letters of the alphabet capitalized.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="functions.html#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb12-2"><a href="functions.html#cb12-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">setNames</span>(data, LETTERS[data])</span>
-<span id="cb12-3"><a href="functions.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="functions.html#cb27-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb27-2"><a href="functions.html#cb27-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">setNames</span>(data, LETTERS[data])</span>
+<span id="cb27-3"><a href="functions.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code></pre></div>
 <pre><code>##  A  B  C  D  E  F  G  H  I  J 
 ##  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>Maybe we are interested in how long the vector is, or what its names are.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="functions.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="functions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(data)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="functions.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="functions.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(data)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="functions.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="functions.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(data)</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot;</code></pre>
 </div>
-<div id="sequences" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Sequences</h2>
+<div id="sequences" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Sequences</h2>
 <p>Suppose we have the function <span class="math inline">\(g(x) = x^2\)</span>, and want to use it. We can define the function below, and call it <code>square</code>. The function can be named whatever we like, <code>square</code> could be <code>platypus</code> for all I care. It doesn’t really matter, except to whoever is reading your program - likely you at a later, more forgetful date. Generally, we want to name the things we create something useful, so that when we are reading our program, we understand what is happening. Naming functions is a</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="functions.html#cb20-1" aria-hidden="true" tabindex="-1"></a>square <span class="ot">=</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> </span>
-<span id="cb20-2"><a href="functions.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">3</span>) <span class="co"># </span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="functions.html#cb35-1" aria-hidden="true" tabindex="-1"></a>square <span class="ot">=</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> </span>
+<span id="cb35-2"><a href="functions.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">square</span>(<span class="dv">3</span>) <span class="co"># </span></span></code></pre></div>
 <pre><code>## [1] 9</code></pre>
 
 </div>

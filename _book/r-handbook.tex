@@ -183,17 +183,140 @@ Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{))}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{functions}{%
 \chapter{Functions}\label{functions}}
 
+\hypertarget{vectors}{%
+\section{Vectors}\label{vectors}}
+
+Vectors are containers information of similar type. You can think of them as having \(1\ * \ n\) cells where \(n\) is \emph{any} positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
+
+\textbf{Rule 1: Vectors only contain one type of data.\\
+Rule 2: Vectors are always} \(1xn\) \textbf{dimensional,} \(1xn=n\) where \(n\) is the \texttt{length} of the vector. \textbf{\hfill\break
+Rule 3: Vectors don't always have names, but should if it makes sense.}
+
+\textbf{Functions} are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.
+
+\textbf{Rule 4: Functions have inputs, outputs, and a body.} A function can have multiple outputs, but given a particular set of inputs, the solution should never change assuming you are not developing a function with randomness built in.
+
+R has a built-in \href{https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html}{constant} called \texttt{letters}. This means that no matter where you are writing R, \texttt{letters} will be available to you. We see that \texttt{letters} is a \textbf{character} \textbf{vector} in our program below, and use the composition of functions to create a program that describes \texttt{letters}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(letters)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+## [20] "t" "u" "v" "w" "x" "y" "z"
+\end{verbatim}
+
+Next, we can use some functions which take in pretty much any object that exists in R and spits back information regarding the \texttt{letters} data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{print\_information }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  
+\NormalTok{  variable\_name }\OtherTok{=} \FunctionTok{deparse1}\NormalTok{(}\FunctionTok{substitute}\NormalTok{(x))}
+  
+\NormalTok{  length\_x }\OtherTok{=} \FunctionTok{length}\NormalTok{(x)}
+\NormalTok{  typeof\_x }\OtherTok{\textless{}{-}} \FunctionTok{typeof}\NormalTok{(x)}
+\NormalTok{  is\_vec\_x }\OtherTok{\textless{}{-}} \FunctionTok{is.vector}\NormalTok{(x)}
+  
+\NormalTok{  meta\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{length =}\NormalTok{ length\_x, }
+    \AttributeTok{type =}\NormalTok{ typeof\_x, }
+    \AttributeTok{is\_vector =}\NormalTok{ is\_vec\_x}
+\NormalTok{  )}
+  
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert}\NormalTok{(}\StringTok{\textquotesingle{}Information about \{variable\_name\}\textquotesingle{}}\NormalTok{)}
+  
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{"\{variable\_name\} is a 1x\{length\_x\} dimensional"}\NormalTok{)}
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{""}\NormalTok{)}
+  
+\NormalTok{  purrr}\SpecialCharTok{::}\FunctionTok{iwalk}\NormalTok{(meta\_list, }\ControlFlowTok{function}\NormalTok{(x, index) \{}
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{\textquotesingle{}\{index\} \{x\} is type \{typeof(x)\}\textquotesingle{}}\NormalTok{))}
+\NormalTok{  \})}
+  
+  \FunctionTok{return}\NormalTok{(meta\_list)}
+\NormalTok{\}}
+
+\NormalTok{cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Execute print_information
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{print\_information}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## > Information about mtcars
+\end{verbatim}
+
+\begin{verbatim}
+## i mtcars is a 1x11 dimensional
+\end{verbatim}
+
+\begin{verbatim}
+## i
+\end{verbatim}
+
+\begin{verbatim}
+## i length 11 is type integer
+\end{verbatim}
+
+\begin{verbatim}
+## i type list is type character
+\end{verbatim}
+
+\begin{verbatim}
+## i is_vector FALSE is type logical
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_success}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information complete\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## v Execute print_information complete
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(output)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $length
+## [1] 11
+## 
+## $type
+## [1] "list"
+## 
+## $is_vector
+## [1] FALSE
+\end{verbatim}
+
+We can take this information and put it in a \texttt{list}. A list holds whatever we want to put inside it. The left side is the \texttt{name} that the object will get within the list, the right side the object itself.
+
 \hypertarget{indexes}{%
 \section{Indexes}\label{indexes}}
 
-For example, consider the values \(1, 2, … n\). Programmers will often talk about \href{https://rspatial.org/intr/4-indexing.html}{indexing}. An index in R starts at \texttt{1} and extends through the integers until \texttt{n} equals the number of items in the list, or vector, or columns of a table, etc.. So suppose we have the vector \texttt{(2,\ 4,\ 5)}, we can take the value at location or index \texttt{2}, and get \texttt{4} back. Indexes are useful, because we often subset or filter our data based on the task at hand. The function \texttt{seq} generates a sequence of integers between the \texttt{from} and \texttt{to} argument.
+Consider the values \(1, 2, … n\), where \(n\) is any positive integer. \href{https://rspatial.org/intr/4-indexing.html}{Indexing} is just our way of specifying the location of something. An index in R always starts at \texttt{1} and extends through the integers until \texttt{n} equals the number of items we are counting.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -206,8 +329,6 @@ For example, consider the values \(1, 2, … n\). Programmers will often talk ab
 \end{verbatim}
 
 What is special about starting the sequence at \texttt{1} is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (\texttt{TRUE}/\texttt{FALSE}), numeric (\texttt{1.1}, \texttt{2}), integer (\texttt{1}, \texttt{4}), or character (\texttt{"a"}, \texttt{"cat"}), there is \emph{always} an integer associated with it's position in the object.
-
-For example, R has a built-in \texttt{constant} called \texttt{letters}. This means that no matter where you are writing R, \texttt{letters} will be available to you without opening up a library with the value. We see that the letters vector contains 26 cells, which we can access with the integer vector we mentioned above.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -252,8 +373,6 @@ For example, R has a built-in \texttt{constant} called \texttt{letters}. This me
 
 \hypertarget{what-are-functions}{%
 \section{What are Functions?}\label{what-are-functions}}
-
-Functions are containers where anything or nothing can happen. They allow for generalization of complicated ideas and routines that we wish to repeat many times. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function.
 
 We can assign this \textbf{integer vector} to a \textbf{variable} called \texttt{data} . When we assign something to a variable, we can take it with us to use in other parts of our program. We will use a built in constant that R provides called \texttt{LETTERS} which is a \textbf{character vector} containing the 26 letters of the alphabet capitalized.
 
