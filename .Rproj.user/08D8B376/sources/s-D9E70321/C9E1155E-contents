@@ -1,0 +1,50 @@
+# Functions {#functions}
+
+## Indexes
+
+For example, consider the values $1, 2, … n$. Programmers will often talk about [indexing](https://rspatial.org/intr/4-indexing.html). An index in R starts at `1` and extends through the integers until `n` equals the number of items in the list, or vector, or columns of a table, etc.. So suppose we have the vector `(2, 4, 5)`, we can take the value at location or index `2`, and get `4` back. Indexes are useful, because we often subset or filter our data based on the task at hand. The function `seq` generates a sequence of integers between the `from` and `to` argument. 
+
+```{r}
+seq(from = 1, to = 10)
+```
+
+What is special about starting the sequence at `1` is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (`TRUE`/`FALSE`), numeric (`1.1`, `2`), integer (`1`, `4`), or character (`"a"`, `"cat"`), there is _always_ an integer associated with it's position in the object.
+
+For example, R has a built-in [`constant`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html) called `letters`. This means that no matter where you are writing R, `letters` will be available to you without opening up a library with the value. We see that the letters vector contains 26 cells, which we can access with the integer vector we mentioned above. 
+
+```{r}
+message('Full letters vector')
+print(letters)
+message('Selecting the first 10 values')
+letters[seq(from = 1, to = 10)]
+```
+
+## What are Functions?
+
+Functions are containers where anything or nothing can happen. They allow for generalization of complicated ideas and routines that we wish to repeat many times. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function.
+
+
+We can assign this **integer vector** to a **variable** called `data` . When we assign something to a variable, we can take it with us to use in other parts of our program. We will use a built in constant that R provides called `LETTERS` which is a **character vector** containing the 26 letters of the alphabet capitalized.
+
+```{r}
+data = seq(1, 10)
+data <- setNames(data, LETTERS[data])
+print(data)
+```
+
+Maybe we are interested in how long the vector is, or what its names are.
+
+```{r}
+length(data)
+class(data)
+names(data)
+```
+
+## Sequences
+
+Suppose we have the function $g(x) = x^2$, and want to use it. We can define the function below, and call it `square`. The function can be named whatever we like, `square` could be `platypus` for all I care. It doesn't really matter, except to whoever is reading your program - likely you at a later, more forgetful date. Generally, we want to name the things we create something useful, so that when we are reading our program, we understand what is happening. Naming functions is a
+
+```{r}
+square = function(x) x^2 
+square(3) # 
+```
