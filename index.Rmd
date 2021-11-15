@@ -29,8 +29,9 @@ description: "A labor of love about R"
     * [Follow Instructions here](https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c)
 
 Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. 
+
 ```{r eval=FALSE}
-install.packages(c('tidyverse'))
+install.packages('tidyverse')
 ```
 
 
