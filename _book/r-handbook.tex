@@ -117,7 +117,7 @@
 
 \title{ndexr: A Hanbook on R}
 \author{Freddy Ray Drennan}
-\date{2021-11-15}
+\date{2021-11-16}
 
 \begin{document}
 \maketitle
@@ -188,16 +188,19 @@ Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} 
 \end{Shaded}
 
 \hypertarget{functions}{%
-\chapter{Functions}\label{functions}}
+\chapter{Building Blocks}\label{functions}}
 
 \hypertarget{vectors}{%
 \section{Vectors}\label{vectors}}
 
-Vectors are containers information of similar type. You can think of them as having \(1\ * \ n\) cells where \(n\) is \emph{any} positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
+Vectors are containers information of similar type. You can think of them as having \(1*n\) cells where \(n\) is \emph{any} positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
 
 \textbf{Rule 1: Vectors only contain one type of data.\\
 Rule 2: Vectors are always} \(1xn\) \textbf{dimensional,} \(1xn=n\) where \(n\) is the \texttt{length} of the vector. \textbf{\hfill\break
 Rule 3: Vectors don't always have names, but should if it makes sense.}
+
+\hypertarget{functions-1}{%
+\section{Functions}\label{functions-1}}
 
 \textbf{Functions} are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.
 
