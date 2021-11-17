@@ -1,5 +1,5 @@
 --- 
-title: 'ndexr: A Hanbook on R'
+title: 'A Handbook on R'
 author: "Freddy Ray Drennan"
 date: "`r Sys.Date()`"
 output: pdf_document
