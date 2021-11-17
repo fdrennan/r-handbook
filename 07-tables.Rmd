@@ -1,4 +1,4 @@
-# Vectors
+# Tables
 
 ## `c`
 ## `[` and `[[`
