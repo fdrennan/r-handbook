@@ -1,0 +1,24 @@
+# Functional Programming
+
+2. [Functions](https://hackmd.io/R_cVl-DBSve03vc1trHrGw)
+    * Sequences
+    * Mapping functions
+    * pipes
+    * void
+    * `return`
+        * Can a function return nothing?
+        * What are side effects?
+        * Multiple return statements
+
+## Base R
+ `apply`, `lapply`, `mapply`
+
+## Modern R
+
+[`purrr`](https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf)
+* `map_*`
+* `map2_*`
+* `pmap_*`
+  * Iterate over What?
+  * Why are data.frames mapped over columnwise?
+    * A: data.frames are lists, and mapping functions will iterate over each individual item in a list

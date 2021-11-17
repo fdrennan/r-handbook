@@ -1,0 +1,20 @@
+# Vectors 
+
+## `c`
+## `[` and `[[`
+
+* Vectors
+  * atomic
+* Strings
+  * Base R
+  * `stringr`
+      * Regular Expressions
+  * [Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf)
+* Numbers
+  * Integer
+  * Double
+* Factors
+  * `as.factor` vs. `as_factor`
+* Dates
+  * Base R
+  * `lubridate`  

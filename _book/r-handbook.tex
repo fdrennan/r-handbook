@@ -117,7 +117,7 @@
 
 \title{ndexr: A Hanbook on R}
 \author{Freddy Ray Drennan}
-\date{2021-11-16}
+\date{2021-11-17}
 
 \begin{document}
 \maketitle
@@ -128,6 +128,8 @@
 }
 \hypertarget{prerequisites}{%
 \chapter{Prerequisites}\label{prerequisites}}
+
+\href{https://hackmd.io/vGRGEPo8QQyiG8gecWv71g}{Book Outline}
 
 \begin{itemize}
 \tightlist
@@ -179,13 +181,36 @@
   \end{itemize}
 \end{itemize}
 
-Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages.
+Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages. Update to renv later.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{literature}{%
+\chapter{Literature}\label{literature}}
+
+Here is a review of existing methods.
+
+\hypertarget{what-is-r}{%
+\chapter{What is R}\label{what-is-r}}
+
+\hypertarget{types-of-problems-you-can-solve}{%
+\section{Types of Problems You Can Solve}\label{types-of-problems-you-can-solve}}
+
+\hypertarget{base-r-tidyverse-data.table}{%
+\section{Base R, Tidyverse, data.table}\label{base-r-tidyverse-data.table}}
+
+\hypertarget{arguments-developments-within-the-language}{%
+\section{Arguments/ Developments within the language}\label{arguments-developments-within-the-language}}
+
+\hypertarget{what-are-variables}{%
+\section{What are Variables}\label{what-are-variables}}
+
+\hypertarget{valid-variable-names}{%
+\subsection{Valid Variable Names}\label{valid-variable-names}}
 
 \hypertarget{functions}{%
 \chapter{Building Blocks}\label{functions}}
@@ -223,45 +248,47 @@ Next, we can use some functions which take in pretty much any object that exists
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{print\_information }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{main }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  print\_information }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+    
+\NormalTok{    variable\_name }\OtherTok{=} \FunctionTok{deparse1}\NormalTok{(}\FunctionTok{substitute}\NormalTok{(x))}
+    
+\NormalTok{    length\_x }\OtherTok{=} \FunctionTok{length}\NormalTok{(x)}
+\NormalTok{    typeof\_x }\OtherTok{\textless{}{-}} \FunctionTok{typeof}\NormalTok{(x)}
+\NormalTok{    is\_vec\_x }\OtherTok{\textless{}{-}} \FunctionTok{is.vector}\NormalTok{(x)}
+    
+\NormalTok{    meta\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+      \AttributeTok{length =}\NormalTok{ length\_x, }
+      \AttributeTok{type =}\NormalTok{ typeof\_x, }
+      \AttributeTok{is\_vector =}\NormalTok{ is\_vec\_x}
+\NormalTok{    )}
+    
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert}\NormalTok{(}\StringTok{\textquotesingle{}Information about \{variable\_name\}\textquotesingle{}}\NormalTok{)}
+    
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{"\{variable\_name\} is a 1x\{length\_x\} dimensional"}\NormalTok{)}
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{""}\NormalTok{)}
+    
+\NormalTok{    purrr}\SpecialCharTok{::}\FunctionTok{iwalk}\NormalTok{(meta\_list, }\ControlFlowTok{function}\NormalTok{(x, index) \{}
+\NormalTok{      cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{\textquotesingle{}\{index\} \{x\} is type \{typeof(x)\}\textquotesingle{}}\NormalTok{))}
+\NormalTok{    \})}
+    
+    \FunctionTok{return}\NormalTok{(meta\_list)}
+\NormalTok{  \}}
   
-\NormalTok{  variable\_name }\OtherTok{=} \FunctionTok{deparse1}\NormalTok{(}\FunctionTok{substitute}\NormalTok{(x))}
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information\textquotesingle{}}\NormalTok{)}
+\NormalTok{  output }\OtherTok{\textless{}{-}} \FunctionTok{print\_information}\NormalTok{(mtcars)}
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_success}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information complete\textquotesingle{}}\NormalTok{)}
   
-\NormalTok{  length\_x }\OtherTok{=} \FunctionTok{length}\NormalTok{(x)}
-\NormalTok{  typeof\_x }\OtherTok{\textless{}{-}} \FunctionTok{typeof}\NormalTok{(x)}
-\NormalTok{  is\_vec\_x }\OtherTok{\textless{}{-}} \FunctionTok{is.vector}\NormalTok{(x)}
-  
-\NormalTok{  meta\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
-    \AttributeTok{length =}\NormalTok{ length\_x, }
-    \AttributeTok{type =}\NormalTok{ typeof\_x, }
-    \AttributeTok{is\_vector =}\NormalTok{ is\_vec\_x}
-\NormalTok{  )}
-  
-\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert}\NormalTok{(}\StringTok{\textquotesingle{}Information about \{variable\_name\}\textquotesingle{}}\NormalTok{)}
-  
-\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{"\{variable\_name\} is a 1x\{length\_x\} dimensional"}\NormalTok{)}
-\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{""}\NormalTok{)}
-  
-\NormalTok{  purrr}\SpecialCharTok{::}\FunctionTok{iwalk}\NormalTok{(meta\_list, }\ControlFlowTok{function}\NormalTok{(x, index) \{}
-\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{\textquotesingle{}\{index\} \{x\} is type \{typeof(x)\}\textquotesingle{}}\NormalTok{))}
-\NormalTok{  \})}
-  
-  \FunctionTok{return}\NormalTok{(meta\_list)}
+  \FunctionTok{print}\NormalTok{(output)}
 \NormalTok{\}}
 
-\NormalTok{cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information\textquotesingle{}}\NormalTok{)}
+\FunctionTok{main}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ## i Execute print_information
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{output }\OtherTok{\textless{}{-}} \FunctionTok{print\_information}\NormalTok{(mtcars)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## > Information about mtcars
@@ -287,21 +314,9 @@ Next, we can use some functions which take in pretty much any object that exists
 ## i is_vector FALSE is type logical
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_success}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information complete\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 ## v Execute print_information complete
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(output)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
 ## $length
@@ -314,157 +329,290 @@ Next, we can use some functions which take in pretty much any object that exists
 ## [1] FALSE
 \end{verbatim}
 
-We can take this information and put it in a \texttt{list}. A list holds whatever we want to put inside it. The left side is the \texttt{name} that the object will get within the list, the right side the object itself.
+\hypertarget{debugging}{%
+\chapter{Debugging}\label{debugging}}
 
-\hypertarget{indexes}{%
-\section{Indexes}\label{indexes}}
+\hypertarget{what-is-the-debugger}{%
+\section{What is the debugger?}\label{what-is-the-debugger}}
 
-Consider the values \(1, 2, … n\), where \(n\) is any positive integer. \href{https://rspatial.org/intr/4-indexing.html}{Indexing} is just our way of specifying the location of something. An index in R always starts at \texttt{1} and extends through the integers until \texttt{n} equals the number of items we are counting.
+\hypertarget{how-to-learn-r-without-knowing-any-r}{%
+\section{How to learn R without knowing any R}\label{how-to-learn-r-without-knowing-any-r}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{1}\NormalTok{, }\AttributeTok{to =} \DecValTok{10}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{browser}{%
+\section{\texorpdfstring{\texttt{browser()}}{browser()}}\label{browser}}
 
-\begin{verbatim}
-##  [1]  1  2  3  4  5  6  7  8  9 10
-\end{verbatim}
+\hypertarget{debug-and-undebug}{%
+\section{\texorpdfstring{\texttt{debug} and \texttt{undebug}}{debug and undebug}}\label{debug-and-undebug}}
 
-What is special about starting the sequence at \texttt{1} is that it creates a vector of integers that also match their location in the vector. When you think about vectors, remember that whether they be logical (\texttt{TRUE}/\texttt{FALSE}), numeric (\texttt{1.1}, \texttt{2}), integer (\texttt{1}, \texttt{4}), or character (\texttt{"a"}, \texttt{"cat"}), there is \emph{always} an integer associated with it's position in the object.
+\hypertarget{debugonce}{%
+\section{\texorpdfstring{\texttt{debugonce}}{debugonce}}\label{debugonce}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}Full letters vector\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{understanding-debugging-output}{%
+\section{Understanding debugging output}\label{understanding-debugging-output}}
 
-\begin{verbatim}
-## Full letters vector
-\end{verbatim}
+\hypertarget{vectors-1}{%
+\chapter{Vectors}\label{vectors-1}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{print}\NormalTok{(letters)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{c}{%
+\section{\texorpdfstring{\texttt{c}}{c}}\label{c}}
 
-\begin{verbatim}
-##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
-## [20] "t" "u" "v" "w" "x" "y" "z"
-\end{verbatim}
+\hypertarget{and}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}Selecting the first 10 values\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\tightlist
+\item
+  Vectors
 
-\begin{verbatim}
-## Selecting the first 10 values
-\end{verbatim}
+  \begin{itemize}
+  \tightlist
+  \item
+    atomic
+  \end{itemize}
+\item
+  Strings
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{letters[}\FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{1}\NormalTok{, }\AttributeTok{to =} \DecValTok{10}\NormalTok{)]}
-\end{Highlighting}
-\end{Shaded}
+  \begin{itemize}
+  \tightlist
+  \item
+    Base R
+  \item
+    \texttt{stringr}
 
-\begin{verbatim}
-##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
-\end{verbatim}
+    \begin{itemize}
+    \tightlist
+    \item
+      Regular Expressions
+    \end{itemize}
+  \item
+    \href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf}{Cheat Sheet}
+  \end{itemize}
+\item
+  Numbers
 
-\hypertarget{what-are-functions}{%
-\section{What are Functions?}\label{what-are-functions}}
+  \begin{itemize}
+  \tightlist
+  \item
+    Integer
+  \item
+    Double
+  \end{itemize}
+\item
+  Factors
 
-We can assign this \textbf{integer vector} to a \textbf{variable} called \texttt{data} . When we assign something to a variable, we can take it with us to use in other parts of our program. We will use a built in constant that R provides called \texttt{LETTERS} which is a \textbf{character vector} containing the 26 letters of the alphabet capitalized.
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{as.factor} vs.~\texttt{as\_factor}
+  \end{itemize}
+\item
+  Dates
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{data }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{)}
-\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{setNames}\NormalTok{(data, LETTERS[data])}
-\FunctionTok{print}\NormalTok{(data)}
-\end{Highlighting}
-\end{Shaded}
+  \begin{itemize}
+  \tightlist
+  \item
+    Base R
+  \item
+    \texttt{lubridate}
+  \end{itemize}
+\end{itemize}
 
-\begin{verbatim}
-##  A  B  C  D  E  F  G  H  I  J 
-##  1  2  3  4  5  6  7  8  9 10
-\end{verbatim}
+\hypertarget{lists}{%
+\chapter{Lists}\label{lists}}
 
-Maybe we are interested in how long the vector is, or what its names are.
+\hypertarget{list}{%
+\section{\texorpdfstring{\texttt{list}}{list}}\label{list}}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{length}\NormalTok{(data)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{and-1}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and-1}}
 
-\begin{verbatim}
-## [1] 10
-\end{verbatim}
+\begin{itemize}
+\tightlist
+\item
+  Lists
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{class}\NormalTok{(data)}
-\end{Highlighting}
-\end{Shaded}
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{list()} and \texttt{c}
+  \item
+    \texttt{{[}} and \texttt{{[}{[}}
+  \item
+    Connection between lists and json
 
-\begin{verbatim}
-## [1] "integer"
-\end{verbatim}
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{jsonlite}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{names}\NormalTok{(data)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{vectors-2}{%
+\chapter{Vectors}\label{vectors-2}}
 
-\begin{verbatim}
-##  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J"
-\end{verbatim}
+\hypertarget{c-1}{%
+\section{\texorpdfstring{\texttt{c}}{c}}\label{c-1}}
 
-\hypertarget{sequences}{%
-\section{Sequences}\label{sequences}}
+\hypertarget{and-2}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and-2}}
 
-Suppose we have the function \(g(x) = x^2\), and want to use it. We can define the function below, and call it \texttt{square}. The function can be named whatever we like, \texttt{square} could be \texttt{platypus} for all I care. It doesn't really matter, except to whoever is reading your program - likely you at a later, more forgetful date. Generally, we want to name the things we create something useful, so that when we are reading our program, we understand what is happening. Naming functions is a
+\begin{itemize}
+\tightlist
+\item
+  Tables
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{square }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x) x}\SpecialCharTok{\^{}}\DecValTok{2} 
-\FunctionTok{square}\NormalTok{(}\DecValTok{3}\NormalTok{) }\CommentTok{\# }
-\end{Highlighting}
-\end{Shaded}
+  \begin{itemize}
+  \tightlist
+  \item
+    matrices
+  \item
+    \texttt{data.frame} vs \texttt{tibble}
+  \item
+    data.frames are lists with equal length, atomic vectors
+  \end{itemize}
+\end{itemize}
 
-\begin{verbatim}
-## [1] 9
-\end{verbatim}
+\hypertarget{functional-programming}{%
+\chapter{Functional Programming}\label{functional-programming}}
 
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \href{https://hackmd.io/R_cVl-DBSve03vc1trHrGw}{Functions}
 
-Here is a review of existing methods.
+  \begin{itemize}
+  \tightlist
+  \item
+    Sequences
+  \item
+    Mapping functions
+  \item
+    pipes
+  \item
+    void
+  \item
+    \texttt{return}
 
-\hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
+    \begin{itemize}
+    \tightlist
+    \item
+      Can a function return nothing?
+    \item
+      What are side effects?
+    \item
+      Multiple return statements
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
 
-We describe our methods in this chapter.
+\hypertarget{base-r}{%
+\section{Base R}\label{base-r}}
 
-\hypertarget{applications}{%
-\chapter{Applications}\label{applications}}
+\texttt{apply}, \texttt{lapply}, \texttt{mapply}
 
-Some \emph{significant} applications are demonstrated in this chapter.
+\hypertarget{modern-r}{%
+\section{Modern R}\label{modern-r}}
 
-\hypertarget{example-one}{%
-\section{Example one}\label{example-one}}
+\href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf}{\texttt{purrr}}
+* \texttt{map\_*}
+* \texttt{map2\_*}
+* \texttt{pmap\_*}
+* Iterate over What?
+* Why are data.frames mapped over columnwise?
+* A: data.frames are lists, and mapping functions will iterate over each individual item in a list
 
-\hypertarget{example-two}{%
-\section{Example two}\label{example-two}}
+\hypertarget{tidy-data}{%
+\chapter{Tidy Data}\label{tidy-data}}
 
-\hypertarget{final-words}{%
-\chapter{Final Words}\label{final-words}}
+\begin{itemize}
+\tightlist
+\item
+  Concept of tidy data
 
-We have finished a nice book.
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://vita.had.co.nz/papers/tidy-data.pdf}{Tidy Data Paper}
+  \end{itemize}
+\item
+  \texttt{tidyr}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{pivot\_longer}
+  \item
+    \texttt{pivot\_wider}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{dplyr}{%
+\chapter{dplyr}\label{dplyr}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dplyr} and data manipulation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    main functions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{select}
+    \item
+      \texttt{mutate}
+    \item
+      \texttt{filter}
+    \item
+      \texttt{transmute}
+    \end{itemize}
+  \item
+    summarizing data
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{group\_by}
+    \item
+      \texttt{summarize} - one row per group
+    \item
+      \texttt{mutate} - one or many rows per group will have same value
+    \item
+      \texttt{ungroup} - remove grouping
+
+      \begin{itemize}
+      \tightlist
+      \item
+        Not everything has to be a \texttt{group\_by}
+      \item
+        Solving group problems with vectors
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  Joining Tables
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{inner\_join}
+  \item
+    \texttt{full\_join}
+  \item
+    \texttt{left\_join} / \texttt{right\_join}
+  \end{itemize}
+\end{itemize}
 
   \bibliography{book.bib,packages.bib}
 

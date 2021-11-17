@@ -1,0 +1,7 @@
+# Tidy Data
+
+* Concept of tidy data
+  * [Tidy Data Paper](https://vita.had.co.nz/papers/tidy-data.pdf)
+* `tidyr`
+  * `pivot_longer`
+  * `pivot_wider`

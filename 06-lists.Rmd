@@ -1,0 +1,10 @@
+# Lists
+
+## `list`
+## `[` and `[[`
+
+* Lists
+  * `list()` and `c`
+  * `[` and `[[`
+  * Connection between lists and json
+    * `jsonlite`

@@ -1,0 +1,15 @@
+# dplyr
+
+* `dplyr` and data manipulation
+  * main functions
+    * `select`
+    * `mutate`
+    * `filter`
+    * `transmute`
+  * summarizing data
+    * `group_by`
+    * `summarize` - one row per group
+    * `mutate` - one or many rows per group will have same value
+    * `ungroup` - remove grouping
+        * Not everything has to be a `group_by`
+        * Solving group problems with vectors 

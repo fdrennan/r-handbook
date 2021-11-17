@@ -1,0 +1,20 @@
+# What is R
+
+## Types of Problems You Can Solve
+
+## Base R, Tidyverse, data.table
+
+## Arguments/ Developments within the language
+
+## What are Variables
+
+### Valid Variable Names
+
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

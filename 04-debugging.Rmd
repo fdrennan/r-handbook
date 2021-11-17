@@ -1,0 +1,8 @@
+# Debugging
+
+## What is the debugger?
+## How to learn R without knowing any R
+## `browser()`
+## `debug` and `undebug`
+## `debugonce`
+## Understanding debugging output

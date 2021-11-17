@@ -1,0 +1,4 @@
+* Joining Tables 
+    * `inner_join`
+    * `full_join`
+    * `left_join` / `right_join`

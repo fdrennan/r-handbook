@@ -1,0 +1,9 @@
+# Vectors
+
+## `c`
+## `[` and `[[`
+
+* Tables
+  * matrices
+  * `data.frame` vs `tibble`
+  * data.frames are lists with equal length, atomic vectors

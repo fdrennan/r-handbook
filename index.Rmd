@@ -1,16 +1,21 @@
 --- 
-title: "ndexr: A Hanbook on R"
+title: 'ndexr: A Hanbook on R'
 author: "Freddy Ray Drennan"
 date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+output: pdf_document
 documentclass: book
-bibliography: [book.bib, packages.bib]
+bibliography:
+- book.bib
+- packages.bib
 biblio-style: apalike
 link-citations: yes
-description: "A labor of love about R"
+description: A labor of love about R
+site: bookdown::bookdown_site
 ---
 
 # Prerequisites
+
+[Book Outline](https://hackmd.io/vGRGEPo8QQyiG8gecWv71g)
 
 * [Install R](https://cran.r-project.org/)
 * [Install R Studio](https://www.rstudio.com/products/rstudio/download/)
@@ -28,16 +33,8 @@ description: "A labor of love about R"
 * [Create Reddit Account](reddit.com) 
     * [Follow Instructions here](https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c)
 
-Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. 
+Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. Update to renv later. 
 
 ```{r eval=FALSE}
 install.packages('tidyverse')
-```
-
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
 ```
