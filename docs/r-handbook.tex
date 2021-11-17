@@ -614,6 +614,212 @@ Next, we can use some functions which take in pretty much any object that exists
   \end{itemize}
 \end{itemize}
 
+\hypertarget{project-outline}{%
+\chapter{Project Outline}\label{project-outline}}
+
+To be expanded over many chapters
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Windows vs Mac vs Linux
+\item
+  Docker Installation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Windows needs to set up VM in bios
+  \end{itemize}
+\item
+  RStudio IDE
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf}{Cheat Sheet}
+  \end{itemize}
+\item
+  reddit api creds
+\item
+  reticulate
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Enough R to know Python
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://rstudio.github.io/reticulate/}{Type Conversions}
+    \end{itemize}
+  \item
+    miniconda installation
+  \item
+    virtual environments
+  \end{itemize}
+\item
+  Package Structure
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Defaults for RStudio
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Rebuild and Restart with Roxygen2
+    \end{itemize}
+  \item
+    \texttt{.env}
+  \item
+    \texttt{.gitignore}
+  \item
+    \texttt{.Rprofile}
+  \item
+    \texttt{.Renviron}
+  \item
+    Packages necessary for efficient development
+
+    \begin{itemize}
+    \tightlist
+    \item
+      usethis
+    \item
+      roxygen
+    \item
+      devtools
+
+      \begin{itemize}
+      \tightlist
+      \item
+        \href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/package-development.pdf}{Cheat Sheet}
+      \end{itemize}
+    \end{itemize}
+  \item
+    Make and Makefiles
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Automating Package Build
+    \end{itemize}
+  \item
+    Unit Testing (probably bad location for ut, no code written)
+
+    \begin{itemize}
+    \tightlist
+    \item
+      testthat
+    \end{itemize}
+  \end{itemize}
+\item
+  Git
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Github
+  \item
+    git circle, workflow
+  \end{itemize}
+\item
+  Retrieving Data from API
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{praw}
+  \item
+    \texttt{dotenv} and \texttt{.env}
+  \item
+    \href{https://github.com/fdrennan/ndexr-platform/blob/master/redditor-api/R/reddit.R}{Old Reddit Code to start with}
+  \end{itemize}
+\item
+  Docker and Docker Compose Introduction
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{.dockerignore}
+  \end{itemize}
+\item
+  Create Postgres Database
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What are Ports?
+  \item
+    Postgres Credentials
+  \end{itemize}
+\item
+  Create functions for Storing Reddit Data
+\item
+  \emph{Need preferred method for streaming data, i.e., Airflow not a good scheduler for scripts that are always running} and need a kickstart on failure, timeout, etc. Docker with \texttt{restart:\ always} may be sufficient
+\item
+  Plumber API
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Add to docker-compose
+  \item
+    Functions for ETL, Shiny Application
+  \end{itemize}
+\item
+  ETL with Airflow and HTTP operator connected to Plumber API
+\item
+  Shiny
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Reactive Graph
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Order does not matter, the graph does
+    \end{itemize}
+  \item
+    Why Modules?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{map} over modules
+    \end{itemize}
+  \end{itemize}
+\item
+  Automating Infrastructure
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{awscli}
+  \item
+    \texttt{boto3}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \href{https://github.com/fdrennan/ndexr-platform/tree/master/biggr/R}{\texttt{biggr}}
+    \end{itemize}
+  \item
+    Create EC2 Server from R
+
+    \begin{itemize}
+    \tightlist
+    \item
+      User Data
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
   \bibliography{book.bib,packages.bib}
 
 \end{document}

@@ -1,0 +1,61 @@
+
+# Project Outline
+
+To be expanded over many chapters
+
+1. Windows vs Mac vs Linux
+2. Docker Installation
+    * Windows needs to set up VM in bios
+3. RStudio IDE
+    * [Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf)
+4. reddit api creds
+5. reticulate
+    * Enough R to know Python
+        * [Type Conversions](https://rstudio.github.io/reticulate/)
+    * miniconda installation
+    * virtual environments
+6. Package Structure
+    * Defaults for RStudio
+        * Rebuild and Restart with Roxygen2
+    * `.env`
+    * `.gitignore`
+    * `.Rprofile`
+    * `.Renviron`
+    * Packages necessary for efficient development
+        * usethis
+        * roxygen
+        * devtools
+            * [Cheat Sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/package-development.pdf)
+    * Make and Makefiles
+        * Automating Package Build
+    * Unit Testing (probably bad location for ut, no code written)
+        * testthat
+7. Git
+    * Github
+    * git circle, workflow 
+9. Retrieving Data from API
+    * `praw`
+    * `dotenv` and `.env`
+    * [Old Reddit Code to start with](https://github.com/fdrennan/ndexr-platform/blob/master/redditor-api/R/reddit.R)
+10. Docker and Docker Compose Introduction
+    * `.dockerignore`
+11. Create Postgres Database
+    * What are Ports?
+    * Postgres Credentials
+12. Create functions for Storing Reddit Data
+13. *Need preferred method for streaming data, i.e., Airflow not a good scheduler for scripts that are always running* and need a kickstart on failure, timeout, etc. Docker with `restart: always` may be sufficient
+14. Plumber API
+    * Add to docker-compose
+    * Functions for ETL, Shiny Application
+15. ETL with Airflow and HTTP operator connected to Plumber API
+16. Shiny
+    * Reactive Graph
+        * Order does not matter, the graph does
+    * Why Modules?
+        * `map` over modules
+17. Automating Infrastructure
+    * `awscli`
+    * `boto3`
+        * [`biggr`](https://github.com/fdrennan/ndexr-platform/tree/master/biggr/R)
+    * Create EC2 Server from R
+        * User Data

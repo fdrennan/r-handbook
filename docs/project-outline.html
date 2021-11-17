@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Functional Programming | ndexr: A Hanbook on R</title>
+  <title>Chapter 12 Project Outline | ndexr: A Hanbook on R</title>
   <meta name="description" content="A labor of love about R" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Functional Programming | ndexr: A Hanbook on R" />
+  <meta property="og:title" content="Chapter 12 Project Outline | ndexr: A Hanbook on R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Functional Programming | ndexr: A Hanbook on R" />
+  <meta name="twitter:title" content="Chapter 12 Project Outline | ndexr: A Hanbook on R" />
   
   <meta name="twitter:description" content="A labor of love about R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="vectors-2.html"/>
-<link rel="next" href="tidy-data.html"/>
+<link rel="prev" href="dplyr.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -207,46 +207,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functional-programming" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Functional Programming</h1>
-<ol start="2" style="list-style-type: decimal">
-<li><a href="https://hackmd.io/R_cVl-DBSve03vc1trHrGw">Functions</a>
+<div id="project-outline" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Project Outline</h1>
+<p>To be expanded over many chapters</p>
+<ol style="list-style-type: decimal">
+<li>Windows vs Mac vs Linux</li>
+<li>Docker Installation
 <ul>
-<li>Sequences</li>
-<li>Mapping functions</li>
-<li>pipes</li>
-<li>void</li>
-<li><code>return</code>
+<li>Windows needs to set up VM in bios</li>
+</ul></li>
+<li>RStudio IDE
 <ul>
-<li>Can a function return nothing?</li>
-<li>What are side effects?</li>
-<li>Multiple return statements</li>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf">Cheat Sheet</a></li>
+</ul></li>
+<li>reddit api creds</li>
+<li>reticulate
+<ul>
+<li>Enough R to know Python
+<ul>
+<li><a href="https://rstudio.github.io/reticulate/">Type Conversions</a></li>
+</ul></li>
+<li>miniconda installation</li>
+<li>virtual environments</li>
+</ul></li>
+<li>Package Structure
+<ul>
+<li>Defaults for RStudio
+<ul>
+<li>Rebuild and Restart with Roxygen2</li>
+</ul></li>
+<li><code>.env</code></li>
+<li><code>.gitignore</code></li>
+<li><code>.Rprofile</code></li>
+<li><code>.Renviron</code></li>
+<li>Packages necessary for efficient development
+<ul>
+<li>usethis</li>
+<li>roxygen</li>
+<li>devtools
+<ul>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/package-development.pdf">Cheat Sheet</a></li>
+</ul></li>
+</ul></li>
+<li>Make and Makefiles
+<ul>
+<li>Automating Package Build</li>
+</ul></li>
+<li>Unit Testing (probably bad location for ut, no code written)
+<ul>
+<li>testthat</li>
+</ul></li>
+</ul></li>
+<li>Git
+<ul>
+<li>Github</li>
+<li>git circle, workflow</li>
+</ul></li>
+<li>Retrieving Data from API
+<ul>
+<li><code>praw</code></li>
+<li><code>dotenv</code> and <code>.env</code></li>
+<li><a href="https://github.com/fdrennan/ndexr-platform/blob/master/redditor-api/R/reddit.R">Old Reddit Code to start with</a></li>
+</ul></li>
+<li>Docker and Docker Compose Introduction
+<ul>
+<li><code>.dockerignore</code></li>
+</ul></li>
+<li>Create Postgres Database
+<ul>
+<li>What are Ports?</li>
+<li>Postgres Credentials</li>
+</ul></li>
+<li>Create functions for Storing Reddit Data</li>
+<li><em>Need preferred method for streaming data, i.e., Airflow not a good scheduler for scripts that are always running</em> and need a kickstart on failure, timeout, etc. Docker with <code>restart: always</code> may be sufficient</li>
+<li>Plumber API
+<ul>
+<li>Add to docker-compose</li>
+<li>Functions for ETL, Shiny Application</li>
+</ul></li>
+<li>ETL with Airflow and HTTP operator connected to Plumber API</li>
+<li>Shiny
+<ul>
+<li>Reactive Graph
+<ul>
+<li>Order does not matter, the graph does</li>
+</ul></li>
+<li>Why Modules?
+<ul>
+<li><code>map</code> over modules</li>
+</ul></li>
+</ul></li>
+<li>Automating Infrastructure
+<ul>
+<li><code>awscli</code></li>
+<li><code>boto3</code>
+<ul>
+<li><a href="https://github.com/fdrennan/ndexr-platform/tree/master/biggr/R"><code>biggr</code></a></li>
+</ul></li>
+<li>Create EC2 Server from R
+<ul>
+<li>User Data</li>
 </ul></li>
 </ul></li>
 </ol>
-<div id="base-r" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Base R</h2>
-<p><code>apply</code>, <code>lapply</code>, <code>mapply</code></p>
-</div>
-<div id="modern-r" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Modern R</h2>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf"><code>purrr</code></a>
-* <code>map_*</code>
-* <code>map2_*</code>
-* <code>pmap_*</code>
-* Iterate over What?
-* Why are data.frames mapped over columnwise?
-* A: data.frames are lists, and mapping functions will iterate over each individual item in a list</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="vectors-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidy-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dplyr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
