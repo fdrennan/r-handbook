@@ -1,0 +1,619 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={ndexr: A Hanbook on R},
+  pdfauthor={Freddy Ray Drennan},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{ndexr: A Hanbook on R}
+\author{Freddy Ray Drennan}
+\date{2021-11-17}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{prerequisites}{%
+\chapter{Prerequisites}\label{prerequisites}}
+
+\href{https://hackmd.io/vGRGEPo8QQyiG8gecWv71g}{Book Outline}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://cran.r-project.org/}{Install R}
+\item
+  \href{https://www.rstudio.com/products/rstudio/download/}{Install R Studio}
+\item
+  \href{https://cran.r-project.org/bin/windows/Rtools/}{Windows Only: Install RTools}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When installed, run in the RStudio Console: \texttt{write(\textquotesingle{}PATH="\$\{RTOOLS40\_HOME\}\textbackslash{}\textbackslash{}usr\textbackslash{}\textbackslash{}bin;\$\{PATH\}"\textquotesingle{},\ file\ =\ "\textasciitilde{}/.Renviron",\ append\ =\ TRUE)}
+  \end{itemize}
+\item
+  \href{https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10}{Windows Only: Install WSL2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Computer should be completely updated before install.
+  \end{itemize}
+\item
+  \href{https://git-scm.com/downloads}{Install Git}
+\item
+  \href{https://github.com/}{Create Github Account}
+\item
+  \href{https://github.com/fdrennan/r-handbook}{Fork r-handbook}
+\item
+  \href{https://docs.docker.com/get-docker/}{Install Docker and Docker Compose}
+\item
+  \href{https://aws.amazon.com/}{Create AWS Account}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Billing will be discussed in the course, but don't expect to pay much - i.e., 10-20 dollars a month for high course activity.
+  \item
+    Remember to \texttt{stop} EC2 servers when we begin using them. AWS is polite about your first few refund requests.
+  \end{itemize}
+\item
+  \href{reddit.com}{Create Reddit Account}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c}{Follow Instructions here}
+  \end{itemize}
+\end{itemize}
+
+Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages. Update to renv later.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{literature}{%
+\chapter{Literature}\label{literature}}
+
+Here is a review of existing methods.
+
+\hypertarget{what-is-r}{%
+\chapter{What is R}\label{what-is-r}}
+
+\hypertarget{types-of-problems-you-can-solve}{%
+\section{Types of Problems You Can Solve}\label{types-of-problems-you-can-solve}}
+
+\hypertarget{base-r-tidyverse-data.table}{%
+\section{Base R, Tidyverse, data.table}\label{base-r-tidyverse-data.table}}
+
+\hypertarget{arguments-developments-within-the-language}{%
+\section{Arguments/ Developments within the language}\label{arguments-developments-within-the-language}}
+
+\hypertarget{what-are-variables}{%
+\section{What are Variables}\label{what-are-variables}}
+
+\hypertarget{valid-variable-names}{%
+\subsection{Valid Variable Names}\label{valid-variable-names}}
+
+\hypertarget{functions}{%
+\chapter{Building Blocks}\label{functions}}
+
+\hypertarget{vectors}{%
+\section{Vectors}\label{vectors}}
+
+Vectors are containers information of similar type. You can think of them as having \(1*n\) cells where \(n\) is \emph{any} positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
+
+\textbf{Rule 1: Vectors only contain one type of data.\\
+Rule 2: Vectors are always} \(1xn\) \textbf{dimensional,} \(1xn=n\) where \(n\) is the \texttt{length} of the vector. \textbf{\hfill\break
+Rule 3: Vectors don't always have names, but should if it makes sense.}
+
+\hypertarget{functions-1}{%
+\section{Functions}\label{functions-1}}
+
+\textbf{Functions} are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it's something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.
+
+\textbf{Rule 4: Functions have inputs, outputs, and a body.} A function can have multiple outputs, but given a particular set of inputs, the solution should never change assuming you are not developing a function with randomness built in.
+
+R has a built-in \href{https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html}{constant} called \texttt{letters}. This means that no matter where you are writing R, \texttt{letters} will be available to you. We see that \texttt{letters} is a \textbf{character} \textbf{vector} in our program below, and use the composition of functions to create a program that describes \texttt{letters}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(letters)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s"
+## [20] "t" "u" "v" "w" "x" "y" "z"
+\end{verbatim}
+
+Next, we can use some functions which take in pretty much any object that exists in R and spits back information regarding the \texttt{letters} data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{main }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  print\_information }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+    
+\NormalTok{    variable\_name }\OtherTok{=} \FunctionTok{deparse1}\NormalTok{(}\FunctionTok{substitute}\NormalTok{(x))}
+    
+\NormalTok{    length\_x }\OtherTok{=} \FunctionTok{length}\NormalTok{(x)}
+\NormalTok{    typeof\_x }\OtherTok{\textless{}{-}} \FunctionTok{typeof}\NormalTok{(x)}
+\NormalTok{    is\_vec\_x }\OtherTok{\textless{}{-}} \FunctionTok{is.vector}\NormalTok{(x)}
+    
+\NormalTok{    meta\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+      \AttributeTok{length =}\NormalTok{ length\_x, }
+      \AttributeTok{type =}\NormalTok{ typeof\_x, }
+      \AttributeTok{is\_vector =}\NormalTok{ is\_vec\_x}
+\NormalTok{    )}
+    
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert}\NormalTok{(}\StringTok{\textquotesingle{}Information about \{variable\_name\}\textquotesingle{}}\NormalTok{)}
+    
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{"\{variable\_name\} is a 1x\{length\_x\} dimensional"}\NormalTok{)}
+\NormalTok{    cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{""}\NormalTok{)}
+    
+\NormalTok{    purrr}\SpecialCharTok{::}\FunctionTok{iwalk}\NormalTok{(meta\_list, }\ControlFlowTok{function}\NormalTok{(x, index) \{}
+\NormalTok{      cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(glue}\SpecialCharTok{::}\FunctionTok{glue}\NormalTok{(}\StringTok{\textquotesingle{}\{index\} \{x\} is type \{typeof(x)\}\textquotesingle{}}\NormalTok{))}
+\NormalTok{    \})}
+    
+    \FunctionTok{return}\NormalTok{(meta\_list)}
+\NormalTok{  \}}
+  
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information\textquotesingle{}}\NormalTok{)}
+\NormalTok{  output }\OtherTok{\textless{}{-}} \FunctionTok{print\_information}\NormalTok{(mtcars)}
+\NormalTok{  cli}\SpecialCharTok{::}\FunctionTok{cli\_alert\_success}\NormalTok{(}\StringTok{\textquotesingle{}Execute print\_information complete\textquotesingle{}}\NormalTok{)}
+  
+  \FunctionTok{print}\NormalTok{(output)}
+\NormalTok{\}}
+
+\FunctionTok{main}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## i Execute print_information
+\end{verbatim}
+
+\begin{verbatim}
+## > Information about mtcars
+\end{verbatim}
+
+\begin{verbatim}
+## i mtcars is a 1x11 dimensional
+\end{verbatim}
+
+\begin{verbatim}
+## i
+\end{verbatim}
+
+\begin{verbatim}
+## i length 11 is type integer
+\end{verbatim}
+
+\begin{verbatim}
+## i type list is type character
+\end{verbatim}
+
+\begin{verbatim}
+## i is_vector FALSE is type logical
+\end{verbatim}
+
+\begin{verbatim}
+## v Execute print_information complete
+\end{verbatim}
+
+\begin{verbatim}
+## $length
+## [1] 11
+## 
+## $type
+## [1] "list"
+## 
+## $is_vector
+## [1] FALSE
+\end{verbatim}
+
+\hypertarget{debugging}{%
+\chapter{Debugging}\label{debugging}}
+
+\hypertarget{what-is-the-debugger}{%
+\section{What is the debugger?}\label{what-is-the-debugger}}
+
+\hypertarget{how-to-learn-r-without-knowing-any-r}{%
+\section{How to learn R without knowing any R}\label{how-to-learn-r-without-knowing-any-r}}
+
+\hypertarget{browser}{%
+\section{\texorpdfstring{\texttt{browser()}}{browser()}}\label{browser}}
+
+\hypertarget{debug-and-undebug}{%
+\section{\texorpdfstring{\texttt{debug} and \texttt{undebug}}{debug and undebug}}\label{debug-and-undebug}}
+
+\hypertarget{debugonce}{%
+\section{\texorpdfstring{\texttt{debugonce}}{debugonce}}\label{debugonce}}
+
+\hypertarget{understanding-debugging-output}{%
+\section{Understanding debugging output}\label{understanding-debugging-output}}
+
+\hypertarget{vectors-1}{%
+\chapter{Vectors}\label{vectors-1}}
+
+\hypertarget{c}{%
+\section{\texorpdfstring{\texttt{c}}{c}}\label{c}}
+
+\hypertarget{and}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and}}
+
+\begin{itemize}
+\tightlist
+\item
+  Vectors
+
+  \begin{itemize}
+  \tightlist
+  \item
+    atomic
+  \end{itemize}
+\item
+  Strings
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Base R
+  \item
+    \texttt{stringr}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Regular Expressions
+    \end{itemize}
+  \item
+    \href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf}{Cheat Sheet}
+  \end{itemize}
+\item
+  Numbers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Integer
+  \item
+    Double
+  \end{itemize}
+\item
+  Factors
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{as.factor} vs.~\texttt{as\_factor}
+  \end{itemize}
+\item
+  Dates
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Base R
+  \item
+    \texttt{lubridate}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{lists}{%
+\chapter{Lists}\label{lists}}
+
+\hypertarget{list}{%
+\section{\texorpdfstring{\texttt{list}}{list}}\label{list}}
+
+\hypertarget{and-1}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Lists
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{list()} and \texttt{c}
+  \item
+    \texttt{{[}} and \texttt{{[}{[}}
+  \item
+    Connection between lists and json
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{jsonlite}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{vectors-2}{%
+\chapter{Vectors}\label{vectors-2}}
+
+\hypertarget{c-1}{%
+\section{\texorpdfstring{\texttt{c}}{c}}\label{c-1}}
+
+\hypertarget{and-2}{%
+\section{\texorpdfstring{\texttt{{[}} and \texttt{{[}{[}}}{{[} and {[}{[}}}\label{and-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Tables
+
+  \begin{itemize}
+  \tightlist
+  \item
+    matrices
+  \item
+    \texttt{data.frame} vs \texttt{tibble}
+  \item
+    data.frames are lists with equal length, atomic vectors
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{functional-programming}{%
+\chapter{Functional Programming}\label{functional-programming}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \href{https://hackmd.io/R_cVl-DBSve03vc1trHrGw}{Functions}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sequences
+  \item
+    Mapping functions
+  \item
+    pipes
+  \item
+    void
+  \item
+    \texttt{return}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Can a function return nothing?
+    \item
+      What are side effects?
+    \item
+      Multiple return statements
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{base-r}{%
+\section{Base R}\label{base-r}}
+
+\texttt{apply}, \texttt{lapply}, \texttt{mapply}
+
+\hypertarget{modern-r}{%
+\section{Modern R}\label{modern-r}}
+
+\href{https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf}{\texttt{purrr}}
+* \texttt{map\_*}
+* \texttt{map2\_*}
+* \texttt{pmap\_*}
+* Iterate over What?
+* Why are data.frames mapped over columnwise?
+* A: data.frames are lists, and mapping functions will iterate over each individual item in a list
+
+\hypertarget{tidy-data}{%
+\chapter{Tidy Data}\label{tidy-data}}
+
+\begin{itemize}
+\tightlist
+\item
+  Concept of tidy data
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://vita.had.co.nz/papers/tidy-data.pdf}{Tidy Data Paper}
+  \end{itemize}
+\item
+  \texttt{tidyr}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{pivot\_longer}
+  \item
+    \texttt{pivot\_wider}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{dplyr}{%
+\chapter{dplyr}\label{dplyr}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{dplyr} and data manipulation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    main functions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{select}
+    \item
+      \texttt{mutate}
+    \item
+      \texttt{filter}
+    \item
+      \texttt{transmute}
+    \end{itemize}
+  \item
+    summarizing data
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{group\_by}
+    \item
+      \texttt{summarize} - one row per group
+    \item
+      \texttt{mutate} - one or many rows per group will have same value
+    \item
+      \texttt{ungroup} - remove grouping
+
+      \begin{itemize}
+      \tightlist
+      \item
+        Not everything has to be a \texttt{group\_by}
+      \item
+        Solving group problems with vectors
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  Joining Tables
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{inner\_join}
+  \item
+    \texttt{full\_join}
+  \item
+    \texttt{left\_join} / \texttt{right\_join}
+  \end{itemize}
+\end{itemize}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}
