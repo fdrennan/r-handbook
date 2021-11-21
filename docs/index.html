@@ -24,7 +24,7 @@
 <meta name="author" content="Freddy Ray Drennan" />
 
 
-<meta name="date" content="2021-11-19" />
+<meta name="date" content="2021-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,8 +139,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-dose-of-theory"><i class="fa fa-check"></i><b>1.1</b> A Dose of Theory</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#initial-setup"><i class="fa fa-check"></i><b>1.2</b> Initial Setup</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#initial-setup"><i class="fa fa-check"></i><b>1.1</b> Initial Setup</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-dose-of-theory"><i class="fa fa-check"></i><b>1.2</b> A Dose of Theory</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>2</b> Literature</a></li>
 <li class="chapter" data-level="3" data-path="what-is-r.html"><a href="what-is-r.html"><i class="fa fa-check"></i><b>3</b> What is R</a>
@@ -216,42 +216,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">A Handbook on R</h1>
 <p class="author"><em>Freddy Ray Drennan</em></p>
-<p class="date"><em>2021-11-19</em></p>
+<p class="date"><em>2021-11-21</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<div id="a-dose-of-theory" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> A Dose of Theory</h2>
-<p>I struggle to determine the best way to start a book like this. But, as someone
-who has read one or two programming books, I can’t help but get tired of “Hello
-World.” If you don’t know what I am talking about, don’t worry, you will but I
-won’t bother you with that here. Instead, I want to talk about vectorization and
-mapping. You will spend the majority of your time choosing functions to
-transform vectors of one form to another. If you want to learn the math behind
-vectors, watch the first few videos of a linear algebra course. Here, I’m going
-to tell you how to think about them for the purpose of using R.</p>
-<p>Vectors are a special kind of list. A list is simply a container that holds
-information and has either a named or numeric value.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>list_with_values <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">first_value_name =</span> <span class="dv">1</span>, <span class="at">hello =</span> mtcars)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">glimpse</span>(list_with_values)</span></code></pre></div>
-<pre><code>## List of 2
-##  $ first_value_name: num 1
-##  $ hello           :&#39;data.frame&#39;:    32 obs. of  11 variables:
-##   ..$ mpg : num [1:32] 21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
-##   ..$ cyl : num [1:32] 6 6 4 6 8 6 8 4 4 6 ...
-##   ..$ disp: num [1:32] 160 160 108 258 360 ...
-##   ..$ hp  : num [1:32] 110 110 93 110 175 105 245 62 95 123 ...
-##   ..$ drat: num [1:32] 3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
-##   ..$ wt  : num [1:32] 2.62 2.88 2.32 3.21 3.44 ...
-##   ..$ qsec: num [1:32] 16.5 17 18.6 19.4 17 ...
-##   ..$ vs  : num [1:32] 0 0 1 1 0 1 0 1 1 1 ...
-##   ..$ am  : num [1:32] 1 1 1 0 0 0 0 0 0 0 ...
-##   ..$ gear: num [1:32] 4 4 4 3 3 3 3 4 4 4 ...
-##   ..$ carb: num [1:32] 4 4 1 1 2 1 4 2 2 4 ...</code></pre>
-<p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
-</div>
-<div id="initial-setup" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Initial Setup</h2>
+<div id="initial-setup" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Initial Setup</h2>
 <p><a href="https://hackmd.io/vGRGEPo8QQyiG8gecWv71g">Book Outline</a></p>
 <ul>
 <li><p><a href="https://cran.r-project.org/">Install R</a></p></li>
@@ -279,7 +249,18 @@ information and has either a named or numeric value.</p>
 </ul></li>
 </ul>
 <p>Make sure you install the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> packages. Update to renv later.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
+</div>
+<div id="a-dose-of-theory" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> A Dose of Theory</h2>
+<p>I struggle to determine the best way to start a book like this. But, as someone who has read one or two programming books, I can’t help but get tired of the “Hello World” introduction. If you don’t know what I am talking about, don’t worry, you will but I won’t bother you with that here. Instead, I want to talk about boring lists.</p>
+<p>A list is a container for anything that exists in the R world. Lists can be named or unnamed.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>list_with_values <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_value_name =</span> <span class="dv">1</span>, </span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">hello =</span> mtcars, </span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">model =</span> <span class="fu">lm</span>(cyl <span class="sc">~</span> mpg, mtcars)</span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
 
 </div>
 </div>
@@ -343,6 +324,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

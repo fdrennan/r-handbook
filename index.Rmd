@@ -15,30 +15,6 @@ site: bookdown::bookdown_site
 
 # Introduction
 
-## A Dose of Theory
-
-I struggle to determine the best way to start a book like this. But, as someone 
-who has read one or two programming books, I can't help but get tired of the "Hello 
-World" introduction. If you don't know what I am talking about, don't worry, you will but I 
-won't bother you with that here. Instead, I want to talk about boring lists. 
-
-A list is a container for anything that exists in the R world. Lists can be named or unnamed.
-
-
-```{r}
-list_with_values <- list(
-    first_value_name = 1, 
-    hello = mtcars, 
-    model = lm(cyl ~ mpg, mtcars)
-)
-```
-
-
-[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
-
-
-
-
 ## Initial Setup
 
 [Book Outline](https://hackmd.io/vGRGEPo8QQyiG8gecWv71g)
@@ -73,6 +49,27 @@ list_with_values <- list(
     -   [Follow Instructions here](https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c)
 
 Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. Update to renv later.
+
+## A Dose of Theory
+
+I struggle to determine the best way to start a book like this. But, as someone  who has read one or two programming books, I can't help but get tired of the "Hello World" introduction. If you don't know what I am talking about, don't worry, you will but I won't bother you with that here. Instead, I want to talk about boring lists. 
+
+A list is a container for anything that exists in the R world. Lists can be named or unnamed.
+
+
+```{r}
+list_with_values <- list(
+    first_value_name = 1, 
+    hello = mtcars, 
+    model = lm(cyl ~ mpg, mtcars)
+)
+```
+
+
+[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
+
+
+
 
 ```{r eval=FALSE}
 install.packages('tidyverse')

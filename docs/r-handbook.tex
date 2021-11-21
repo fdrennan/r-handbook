@@ -117,7 +117,7 @@
 
 \title{A Handbook on R}
 \author{Freddy Ray Drennan}
-\date{2021-11-17}
+\date{2021-11-21}
 
 \begin{document}
 \maketitle
@@ -126,13 +126,15 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+\hypertarget{initial-setup}{%
+\section{Initial Setup}\label{initial-setup}}
 
 \href{https://hackmd.io/vGRGEPo8QQyiG8gecWv71g}{Book Outline}
 
 \begin{itemize}
-\tightlist
 \item
   \href{https://cran.r-project.org/}{Install R}
 \item
@@ -183,6 +185,25 @@
 
 Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages. Update to renv later.
 
+\hypertarget{a-dose-of-theory}{%
+\section{A Dose of Theory}\label{a-dose-of-theory}}
+
+I struggle to determine the best way to start a book like this. But, as someone who has read one or two programming books, I can't help but get tired of the ``Hello World'' introduction. If you don't know what I am talking about, don't worry, you will but I won't bother you with that here. Instead, I want to talk about boring lists.
+
+A list is a container for anything that exists in the R world. Lists can be named or unnamed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list\_with\_values }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{first\_value\_name =} \DecValTok{1}\NormalTok{, }
+    \AttributeTok{hello =}\NormalTok{ mtcars, }
+    \AttributeTok{model =} \FunctionTok{lm}\NormalTok{(cyl }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg, mtcars)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized\#:~:text=To\%20identify\%20if\%20an\%20R\%20object\%20is\%20a\%20vector\%20\%2C\%20I,a\%20vector\%20or\%20False\%20otherwise.}{How do I know if a function is vectorized}
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
@@ -218,11 +239,39 @@ Here is a review of existing methods.
 \hypertarget{vectors}{%
 \section{Vectors}\label{vectors}}
 
-Vectors are containers information of similar type. You can think of them as having \(1*n\) cells where \(n\) is \emph{any} positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
+Vectors are containers information of similar type. You can think of them as having \(1*n\) cells where \(n\) is any positive integer, and make up the rows and columns of tables. Vectors always contain the same type of value. R has many different types of vectors, but the most common are \textbf{numeric}, \textbf{character}, and \textbf{logical} (\textbf{TRUE}/\textbf{FALSE}).
 
-\textbf{Rule 1: Vectors only contain one type of data.\\
-Rule 2: Vectors are always} \(1xn\) \textbf{dimensional,} \(1xn=n\) where \(n\) is the \texttt{length} of the vector. \textbf{\hfill\break
-Rule 3: Vectors don't always have names, but should if it makes sense.}
+Vectors are cool. I like to think of them as boxes that can only be stacked on top of one another.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "double"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\DecValTok{1}\NormalTok{, }\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
 
 \hypertarget{functions-1}{%
 \section{Functions}\label{functions-1}}
