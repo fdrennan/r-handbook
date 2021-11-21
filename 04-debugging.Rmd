@@ -3,6 +3,8 @@
 ## What is the debugger?
 ## How to learn R without knowing any R
 ## `browser()`
+## `next`, `continue`
 ## `debug` and `undebug`
 ## `debugonce`
 ## Understanding debugging output
+## LOTS OF DEBUGGING EXERCISES CANNOT STRESS ENOUGH

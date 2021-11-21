@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Functional Programming | A Handbook on R</title>
+  <title>Chapter 8 Tables | A Handbook on R</title>
   <meta name="description" content="A labor of love about R" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Functional Programming | A Handbook on R" />
+  <meta property="og:title" content="Chapter 8 Tables | A Handbook on R" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Functional Programming | A Handbook on R" />
+  <meta name="twitter:title" content="Chapter 8 Tables | A Handbook on R" />
   
   <meta name="twitter:description" content="A labor of love about R" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="tables.html"/>
-<link rel="next" href="tidy-data.html"/>
+<link rel="prev" href="lists.html"/>
+<link rel="next" href="functional-programming.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -209,36 +209,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="functional-programming" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Functional Programming</h1>
-<ol start="2" style="list-style-type: decimal">
-<li><a href="https://hackmd.io/R_cVl-DBSve03vc1trHrGw">Functions</a>
-<ul>
-<li>Sequences</li>
-<li>Mapping functions</li>
-<li>pipes</li>
-<li>void</li>
-<li><code>return</code>
-<ul>
-<li>Can a function return nothing?</li>
-<li>What are side effects?</li>
-<li>Multiple return statements</li>
-</ul></li>
-</ul></li>
-</ol>
-<div id="base-r" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Base R</h2>
-<p><code>apply</code>, <code>lapply</code>, <code>mapply</code></p>
+<div id="tables" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Tables</h1>
+<div id="c-1" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> <code>c</code></h2>
 </div>
-<div id="modern-r" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Modern R</h2>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/purrr.pdf"><code>purrr</code></a>
-* <code>map_*</code>
-* <code>map2_*</code>
-* <code>pmap_*</code>
-* Iterate over What?
-* Why are data.frames mapped over columnwise?
-* A: data.frames are lists, and mapping functions will iterate over each individual item in a list</p>
+<div id="and-2" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> <code>[</code> and <code>[[</code></h2>
+<ul>
+<li>Tables
+<ul>
+<li>matrices</li>
+<li><code>data.frame</code> vs <code>tibble</code></li>
+<li>data.frames are lists with equal length, atomic vectors</li>
+</ul></li>
+</ul>
 
 </div>
 </div>
@@ -247,8 +232,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="tables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidy-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lists.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functional-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -2,11 +2,15 @@
 
 ## Vectors
 
-Vectors are containers information of similar type. You can think of them as having $1*n$ cells where $n$ is *any* positive integer, and make up the rows and columns of tables. Vectors have a few components that make them special. First, they always contain the same type of value. R has many different data types, but the most common are **numeric**, **character**, and **logical** (**TRUE**/**FALSE**).
+Vectors are containers information of similar type. You can think of them as having $1*n$ cells where $n$ is any positive integer, and make up the rows and columns of tables. Vectors always contain the same type of value. R has many different types of vectors, but the most common are **numeric**, **character**, and **logical** (**TRUE**/**FALSE**).
 
-**Rule 1: Vectors only contain one type of data.\
-Rule 2: Vectors are always** $1xn$ **dimensional,** $1xn=n$ where $n$ is the `length` of the vector. **\
-Rule 3: Vectors don't always have names, but should if it makes sense.**
+Vectors are cool. I like to think of them as boxes that can only be stacked on top of one another.
+
+```{r}
+typeof(c(TRUE))
+typeof(c(TRUE, 1))
+typeof(c(TRUE, 1, 'a'))
+```
 
 ## Functions
 
@@ -59,4 +63,3 @@ main <- function() {
 
 main()
 ```
-
