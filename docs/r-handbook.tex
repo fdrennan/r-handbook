@@ -136,6 +136,14 @@
 
 \begin{itemize}
 \item
+  {[}Read{]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.r-project.org/about.html}{What is R}
+  \end{itemize}
+\item
   \href{https://cran.r-project.org/}{Install R}
 \item
   \href{https://www.rstudio.com/products/rstudio/download/}{Install R Studio}
@@ -190,17 +198,45 @@ Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} 
 
 I struggle to determine the best way to start a book like this. But, as someone who has read one or two programming books, I can't help but get tired of the ``Hello World'' introduction. If you don't know what I am talking about, don't worry, you will but I won't bother you with that here. Instead, I want to talk about boring lists.
 
-A list is a container for anything that exists in the R world. Lists can be named or unnamed.
+In order to talk about lists, we need to go get one. In the code below, you will see the function, \texttt{library}. Functions do things for us given a set of inputs. R is called a functional language, so it is fitting that the first thing we do is use one. In this case, \texttt{library} loads a package of code that someone submitted for the rest of the R community to use. We will discuss how to create these packages at a later part in the book.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{list\_with\_values }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}
-    \AttributeTok{first\_value\_name =} \DecValTok{1}\NormalTok{, }
-    \AttributeTok{hello =}\NormalTok{ mtcars, }
-    \AttributeTok{model =} \FunctionTok{lm}\NormalTok{(cyl }\SpecialCharTok{\textasciitilde{}}\NormalTok{ mpg, mtcars)}
-\NormalTok{)}
+\FunctionTok{library}\NormalTok{(COVID19)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'COVID19' was built under R version 4.1.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{covid\_data }\OtherTok{\textless{}{-}} \FunctionTok{covid19}\NormalTok{(}\AttributeTok{country =} \StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{, }\AttributeTok{start =} \StringTok{\textquotesingle{}2021{-}01{-}01\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## We have invested a lot of time and effort in creating COVID-19 Data Hub, please cite the following when using it:
+## 
+##   Guidotti, E., Ardia, D., (2020), "COVID-19 Data Hub", Journal of Open
+##   Source Software 5(51):2376, doi: 10.21105/joss.02376.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Article{,
+##     title = {COVID-19 Data Hub},
+##     year = {2020},
+##     doi = {10.21105/joss.02376},
+##     author = {Emanuele Guidotti and David Ardia},
+##     journal = {Journal of Open Source Software},
+##     volume = {5},
+##     number = {51},
+##     pages = {2376},
+##   }
+## 
+## To hide this message use 'verbose = FALSE'.
+\end{verbatim}
 
 \href{https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized\#:~:text=To\%20identify\%20if\%20an\%20R\%20object\%20is\%20a\%20vector\%20\%2C\%20I,a\%20vector\%20or\%20False\%20otherwise.}{How do I know if a function is vectorized}
 
@@ -209,11 +245,6 @@ A list is a container for anything that exists in the R world. Lists can be name
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
-
-Here is a review of existing methods.
 
 \hypertarget{what-is-r}{%
 \chapter{What is R}\label{what-is-r}}
