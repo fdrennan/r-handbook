@@ -1,2 +1,2 @@
 
-[Book Home](https://github.com/fdrennan/r-handbook)
+[Book Home](https://fdrennan.github.io/r-handbook/index.html)
