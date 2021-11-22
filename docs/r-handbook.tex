@@ -117,7 +117,7 @@
 
 \title{A Handbook on R}
 \author{Freddy Ray Drennan}
-\date{2021-11-21}
+\date{2021-11-22}
 
 \begin{document}
 \maketitle
@@ -135,7 +135,33 @@
 Let's solve a problem using R. Suppose we have a friend that is interested in the current
 trend regarding COVID-19 cases. Where would we start? The first question is always going to be, ``How do I obtain data for my analysis?'' In the case for COVID-19, the answer is someone has already done that for you in the form of an R package. How do I know? I Googled it \texttt{covid19\ R\ package} and found this link \href{https://covid19datahub.io/articles/r.html}{COVID19 Datahub}.
 
-The first thing I notice when I come to this link is \texttt{install.packages("COVID19")} right in the front of the page. \texttt{install.packages} is a function. A function \emph{does things} given a set of inputs. Remember the equation \(y = 2x + 3\) or something like it? What did we say? We said something like - given \(x=2\) then \(y=7\), because we would just plug and chug. We put in a \(2\) for \(x\), \(2(2) +3 = 7\). When we got to calculus, equations became functions with a slightly different look. \(f(x) = 2x + 3\). What happened to the \(y\)? Well, nothing really except for the way we describe things. We now have a way of describing inputs and output a little more clearly. \(f\) is the \emph{name} of the rule that we apply to \(x\). \(f\) contains the instructions to turn \(x\) into something else, often called \(y\). We're just taking note of the fact that \(x\) is the only thing that the function needs to apply it's logic. We could have \(f(x, y, d)= x^2 + y^2 + d\) and if we wrote \(f(2, 4, 5)\) then we would have a shorthand way of describing the whole - \(2^2+4^2+5\). If we can write \(f(2, 4, 5)\) instead of \(f(2, 4, 5)=2^2+4^2+5\) that would be quite convenient.
+The first thing I notice when I come to this link is \texttt{install.packages("COVID19")} right in the front of the page. \texttt{install.packages} is called a function. A function \emph{does things} given a set of inputs. Remember the equation \(y = 2x + 3\) or something like it? What did we say? We said something like - given \(x=2\) then \(y=7\). We put in a \(2\) for \(x\), \(2(2) + 3\) and then say \(y=7\). When we got to calculus, equations became functions with a slightly different look. \(f(x) = 2x + 3\). What happened to the \(y\)? Well, nothing really except for the way we describe things. We can say \(y=f(x)\) or \(result=f(x)\) or \(z=g(x)\) or anything we like really. Logic allows us to describe things however we want, so long as we are logical. In R, we can describe the relationships above like so -
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Same as f(x) = 2x + 3}
+\NormalTok{f }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x) \{}
+    \DecValTok{2} \SpecialCharTok{*}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{3}
+\NormalTok{\}}
+
+\FunctionTok{f}\NormalTok{(}\AttributeTok{x =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+The components of the function above are
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The name of the function \(f\)
+\end{enumerate}
+
+We now have a way of describing inputs and output a little more clearly. \(f\) is the \emph{name} of the rule that we apply to \(x\). \(f\) contains the instructions to turn \(x\) into something else, often called \(y\). We're just taking note of the fact that \(x\) is the only thing that the function needs to apply it's logic. We could have \(f(x, y, d)= x^2 + y^2 + d\) and if we wrote \(f(2, 4, 5)\) then we would have a shorthand way of describing the whole - \(2^2+4^2+5\). If we can write \(f(2, 4, 5)\) instead of \(f(2, 4, 5)=2^2+4^2+5\) that would be quite convenient.
 
 Functions -
 * A

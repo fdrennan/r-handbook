@@ -24,7 +24,7 @@
 <meta name="author" content="Freddy Ray Drennan" />
 
 
-<meta name="date" content="2021-11-21" />
+<meta name="date" content="2021-11-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">A Handbook on R</h1>
 <p class="author"><em>Freddy Ray Drennan</em></p>
-<p class="date"><em>2021-11-21</em></p>
+<p class="date"><em>2021-11-22</em></p>
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -223,21 +223,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> A Dose of R</h2>
 <p>Let’s solve a problem using R. Suppose we have a friend that is interested in the current
 trend regarding COVID-19 cases. Where would we start? The first question is always going to be, “How do I obtain data for my analysis?” In the case for COVID-19, the answer is someone has already done that for you in the form of an R package. How do I know? I Googled it <code>covid19 R package</code> and found this link <a href="https://covid19datahub.io/articles/r.html">COVID19 Datahub</a>.</p>
-<p>The first thing I notice when I come to this link is <code>install.packages("COVID19")</code> right in the front of the page. <code>install.packages</code> is a function. A function <em>does things</em> given a set of inputs. Remember the equation <span class="math inline">\(y = 2x + 3\)</span> or something like it? What did we say? We said something like - given <span class="math inline">\(x=2\)</span> then <span class="math inline">\(y=7\)</span>, because we would just plug and chug. We put in a <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span>, <span class="math inline">\(2(2) +3 = 7\)</span>. When we got to calculus, equations became functions with a slightly different look. <span class="math inline">\(f(x) = 2x + 3\)</span>. What happened to the <span class="math inline">\(y\)</span>? Well, nothing really except for the way we describe things. We now have a way of describing inputs and output a little more clearly. <span class="math inline">\(f\)</span> is the <em>name</em> of the rule that we apply to <span class="math inline">\(x\)</span>. <span class="math inline">\(f\)</span> contains the instructions to turn <span class="math inline">\(x\)</span> into something else, often called <span class="math inline">\(y\)</span>. We’re just taking note of the fact that <span class="math inline">\(x\)</span> is the only thing that the function needs to apply it’s logic. We could have <span class="math inline">\(f(x, y, d)= x^2 + y^2 + d\)</span> and if we wrote <span class="math inline">\(f(2, 4, 5)\)</span> then we would have a shorthand way of describing the whole - <span class="math inline">\(2^2+4^2+5\)</span>. If we can write <span class="math inline">\(f(2, 4, 5)\)</span> instead of <span class="math inline">\(f(2, 4, 5)=2^2+4^2+5\)</span> that would be quite convenient.</p>
+<p>The first thing I notice when I come to this link is <code>install.packages("COVID19")</code> right in the front of the page. <code>install.packages</code> is called a function. A function <em>does things</em> given a set of inputs. Remember the equation <span class="math inline">\(y = 2x + 3\)</span> or something like it? What did we say? We said something like - given <span class="math inline">\(x=2\)</span> then <span class="math inline">\(y=7\)</span>. We put in a <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span>, <span class="math inline">\(2(2) + 3\)</span> and then say <span class="math inline">\(y=7\)</span>. When we got to calculus, equations became functions with a slightly different look. <span class="math inline">\(f(x) = 2x + 3\)</span>. What happened to the <span class="math inline">\(y\)</span>? Well, nothing really except for the way we describe things. We can say <span class="math inline">\(y=f(x)\)</span> or <span class="math inline">\(result=f(x)\)</span> or <span class="math inline">\(z=g(x)\)</span> or anything we like really. Logic allows us to describe things however we want, so long as we are logical. In R, we can describe the relationships above like so -</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Same as f(x) = 2x + 3</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb1-4"><a href="index.html#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="index.html#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="index.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<p>The components of the function above are</p>
+<ol style="list-style-type: decimal">
+<li>The name of the function <span class="math inline">\(f\)</span></li>
+</ol>
+<p>We now have a way of describing inputs and output a little more clearly. <span class="math inline">\(f\)</span> is the <em>name</em> of the rule that we apply to <span class="math inline">\(x\)</span>. <span class="math inline">\(f\)</span> contains the instructions to turn <span class="math inline">\(x\)</span> into something else, often called <span class="math inline">\(y\)</span>. We’re just taking note of the fact that <span class="math inline">\(x\)</span> is the only thing that the function needs to apply it’s logic. We could have <span class="math inline">\(f(x, y, d)= x^2 + y^2 + d\)</span> and if we wrote <span class="math inline">\(f(2, 4, 5)\)</span> then we would have a shorthand way of describing the whole - <span class="math inline">\(2^2+4^2+5\)</span>. If we can write <span class="math inline">\(f(2, 4, 5)\)</span> instead of <span class="math inline">\(f(2, 4, 5)=2^2+4^2+5\)</span> that would be quite convenient.</p>
 <p>Functions -
 * A
 So in your RStudio console, you can write the following to install the <code>COVID19</code> package.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;COVID19&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;COVID19&#39;</span>)</span></code></pre></div>
 <p>I’m a man of few words. So let’s get to it. The two lines of code below consist of three functions. The first two are <code>library</code> and <code>covid19</code>, but the third is hidden, and I will disclose where shortly. <em>Functions</em> are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world’s your oyster) output.</p>
 <p>In this case, <code>library</code> loads <em>packages</em> from a folder in the R environment called library. You can see which ones your R environment knows about by running the function <code>.libPaths()</code>. <code>covid19</code> is a function from the <code>COVID19</code> package, and would only be available after executing <code>library(COVID19)</code> or if <code>library(COVID19)</code> is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: <code>COVID19::covid19</code>. Generally speaking, you simply use <code>library</code> because it reduces the amount of text on the page.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
 <pre><code>## Warning: package &#39;COVID19&#39; was built under R version 4.1.2</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
-<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
-<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
-<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
-<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
+<span id="cb6-2"><a href="index.html#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
+<span id="cb6-3"><a href="index.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
+<span id="cb6-4"><a href="index.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
+<span id="cb6-5"><a href="index.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-6"><a href="index.html#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
 </div>
 <div id="initial-setup" class="section level2" number="1.2">
@@ -269,7 +281,7 @@ So in your RStudio console, you can write the following to install the <code>COV
 </ul></li>
 </ul>
 <p>Make sure you install the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> packages. Update to renv later.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
 
 </div>
 </div>
