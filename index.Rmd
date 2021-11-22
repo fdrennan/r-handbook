@@ -15,12 +15,51 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+## A Dose of R
+
+Let's solve a problem using R. Suppose we have a friend that is interested in the current
+trend regarding COVID-19 cases. Where would we start? The first question is always going to be, "How do I obtain data for my analysis?" In the case for COVID-19, the answer is someone has already done that for you in the form of an R package. How do I know? I Googled it `covid19 R package` and found this link [COVID19 Datahub](https://covid19datahub.io/articles/r.html). 
+
+
+The first thing I notice when I come to this link is `install.packages("COVID19")` right in the front of the page. `install.packages` is called a function. A function *does things* given a set of inputs. Remember the equation $y = 2x + 3$ or something like it? What did we say? We said something like - given $x=2$ then $y=7$, because we would just plug and chug. We put in a $2$ for $x$, $2(2) +3 = 7$. When we got to calculus, equations became functions with a slightly different look. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really except for the way we describe things. We now have a way of describing inputs and output a little more clearly. $f$ is the _name_ of the rule that we apply to $x$. $f$ contains the instructions to turn $x$ into something else, often called $y$. We're just taking note of the fact that $x$ is the only thing that the function needs to apply it's logic. We could have $f(x, y, d)= x^2 + y^2 + d$ and if we wrote $f(2, 4, 5)$ then we would have a shorthand way of describing the whole - $2^2+4^2+5$. If we can write $f(2, 4, 5)$ instead of $f(2, 4, 5)=2^2+4^2+5$ that would be quite convenient. 
+
+Functions -
+* A
+So in your RStudio console, you can write the following to install the `COVID19` package. 
+```{r, eval=FALSE}
+install.packages('COVID19')
+```
+
+I'm a man of few words. So let's get to it. The two lines of code below consist of three functions. The first two are `library` and `covid19`, but the third is hidden, and I will disclose where shortly. _Functions_ are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output. 
+
+In this case, `library` loads _packages_ from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. `covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
+
+
+```{r}
+library(COVID19)
+covid_data <- covid19(
+    country = 'United States', 
+    start = '2021-01-01', 
+    end = "2021-11-21",
+    verbose = FALSE
+)
+```
+
+```{r}
+
+```
+
+
+
+[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
+
+
+
+
 ## Initial Setup
 
 [Book Outline](https://hackmd.io/vGRGEPo8QQyiG8gecWv71g)
 
-- [Read]
-    - [What is R](https://www.r-project.org/about.html)
 -   [Install R](https://cran.r-project.org/)
 
 -   [Install R Studio](https://www.rstudio.com/products/rstudio/download/)
@@ -51,23 +90,6 @@ site: bookdown::bookdown_site
     -   [Follow Instructions here](https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c)
 
 Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. Update to renv later.
-
-## A Dose of Theory
-
-I struggle to determine the best way to start a book like this. But, as someone  who has read one or two programming books, I can't help but get tired of the "Hello World" introduction. If you don't know what I am talking about, don't worry, you will but I won't bother you with that here. Instead, I want to talk about boring lists. 
-
-In order to talk about lists, we need to go get one. In the code below, you will see the function, `library`. Functions do things for us given a set of inputs. R is called a functional language, so it is fitting that the first thing we do is use one. In this case, `library` loads a package of code that someone submitted for the rest of the R community to use. We will discuss how to create these packages at a later part in the book. 
-
-```{r}
-library(COVID19)
-covid_data <- covid19(country = 'United States', start = '2021-01-01')
-```
-
-
-[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
-
-
-
 
 ```{r eval=FALSE}
 install.packages('tidyverse')

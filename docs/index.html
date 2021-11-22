@@ -139,8 +139,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#initial-setup"><i class="fa fa-check"></i><b>1.1</b> Initial Setup</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#a-dose-of-theory"><i class="fa fa-check"></i><b>1.2</b> A Dose of Theory</a></li>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#a-dose-of-r"><i class="fa fa-check"></i><b>1.1</b> A Dose of R</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#initial-setup"><i class="fa fa-check"></i><b>1.2</b> Initial Setup</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="what-is-r.html"><a href="what-is-r.html"><i class="fa fa-check"></i><b>2</b> What is R</a>
 <ul>
@@ -219,14 +219,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<div id="initial-setup" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Initial Setup</h2>
+<div id="a-dose-of-r" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> A Dose of R</h2>
+<p>Let’s solve a problem using R. Suppose we have a friend that is interested in the current
+trend regarding COVID-19 cases. Where would we start? The first question is always going to be, “How do I obtain data for my analysis?” In the case for COVID-19, the answer is someone has already done that for you in the form of an R package. How do I know? I Googled it <code>covid19 R package</code> and found this link <a href="https://covid19datahub.io/articles/r.html">COVID19 Datahub</a>.</p>
+<p>The first thing I notice when I come to this link is <code>install.packages("COVID19")</code> right in the front of the page. <code>install.packages</code> is a function. A function <em>does things</em> given a set of inputs. Remember the equation <span class="math inline">\(y = 2x + 3\)</span> or something like it? What did we say? We said something like - given <span class="math inline">\(x=2\)</span> then <span class="math inline">\(y=7\)</span>, because we would just plug and chug. We put in a <span class="math inline">\(2\)</span> for <span class="math inline">\(x\)</span>, <span class="math inline">\(2(2) +3 = 7\)</span>. When we got to calculus, equations became functions with a slightly different look. <span class="math inline">\(f(x) = 2x + 3\)</span>. What happened to the <span class="math inline">\(y\)</span>? Well, nothing really except for the way we describe things. We now have a way of describing inputs and output a little more clearly. <span class="math inline">\(f\)</span> is the <em>name</em> of the rule that we apply to <span class="math inline">\(x\)</span>. <span class="math inline">\(f\)</span> contains the instructions to turn <span class="math inline">\(x\)</span> into something else, often called <span class="math inline">\(y\)</span>. We’re just taking note of the fact that <span class="math inline">\(x\)</span> is the only thing that the function needs to apply it’s logic. We could have <span class="math inline">\(f(x, y, d)= x^2 + y^2 + d\)</span> and if we wrote <span class="math inline">\(f(2, 4, 5)\)</span> then we would have a shorthand way of describing the whole - <span class="math inline">\(2^2+4^2+5\)</span>. If we can write <span class="math inline">\(f(2, 4, 5)\)</span> instead of <span class="math inline">\(f(2, 4, 5)=2^2+4^2+5\)</span> that would be quite convenient.</p>
+<p>Functions -
+* A
+So in your RStudio console, you can write the following to install the <code>COVID19</code> package.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;COVID19&#39;</span>)</span></code></pre></div>
+<p>I’m a man of few words. So let’s get to it. The two lines of code below consist of three functions. The first two are <code>library</code> and <code>covid19</code>, but the third is hidden, and I will disclose where shortly. <em>Functions</em> are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world’s your oyster) output.</p>
+<p>In this case, <code>library</code> loads <em>packages</em> from a folder in the R environment called library. You can see which ones your R environment knows about by running the function <code>.libPaths()</code>. <code>covid19</code> is a function from the <code>COVID19</code> package, and would only be available after executing <code>library(COVID19)</code> or if <code>library(COVID19)</code> is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: <code>COVID19::covid19</code>. Generally speaking, you simply use <code>library</code> because it reduces the amount of text on the page.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
+<pre><code>## Warning: package &#39;COVID19&#39; was built under R version 4.1.2</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
+<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
+<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
+<span id="cb4-4"><a href="index.html#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
+<span id="cb4-5"><a href="index.html#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-6"><a href="index.html#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
+</div>
+<div id="initial-setup" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Initial Setup</h2>
 <p><a href="https://hackmd.io/vGRGEPo8QQyiG8gecWv71g">Book Outline</a></p>
 <ul>
-<li><p>[Read]</p>
-<ul>
-<li><a href="https://www.r-project.org/about.html">What is R</a></li>
-</ul></li>
 <li><p><a href="https://cran.r-project.org/">Install R</a></p></li>
 <li><p><a href="https://www.rstudio.com/products/rstudio/download/">Install R Studio</a></p></li>
 <li><p><a href="https://cran.r-project.org/bin/windows/Rtools/">Windows Only: Install RTools</a></p>
@@ -252,34 +269,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>Make sure you install the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> packages. Update to renv later.</p>
-</div>
-<div id="a-dose-of-theory" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> A Dose of Theory</h2>
-<p>I struggle to determine the best way to start a book like this. But, as someone who has read one or two programming books, I can’t help but get tired of the “Hello World” introduction. If you don’t know what I am talking about, don’t worry, you will but I won’t bother you with that here. Instead, I want to talk about boring lists.</p>
-<p>In order to talk about lists, we need to go get one. In the code below, you will see the function, <code>library</code>. Functions do things for us given a set of inputs. R is called a functional language, so it is fitting that the first thing we do is use one. In this case, <code>library</code> loads a package of code that someone submitted for the rest of the R community to use. We will discuss how to create these packages at a later part in the book.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
-<pre><code>## Warning: package &#39;COVID19&#39; was built under R version 4.1.2</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(<span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>)</span></code></pre></div>
-<pre><code>## We have invested a lot of time and effort in creating COVID-19 Data Hub, please cite the following when using it:
-## 
-##   Guidotti, E., Ardia, D., (2020), &quot;COVID-19 Data Hub&quot;, Journal of Open
-##   Source Software 5(51):2376, doi: 10.21105/joss.02376.
-## 
-## A BibTeX entry for LaTeX users is
-## 
-##   @Article{,
-##     title = {COVID-19 Data Hub},
-##     year = {2020},
-##     doi = {10.21105/joss.02376},
-##     author = {Emanuele Guidotti and David Ardia},
-##     journal = {Journal of Open Source Software},
-##     volume = {5},
-##     number = {51},
-##     pages = {2376},
-##   }
-## 
-## To hide this message use &#39;verbose = FALSE&#39;.</code></pre>
-<p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
 
 </div>
