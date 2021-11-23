@@ -17,30 +17,51 @@ site: bookdown::bookdown_site
 
 ## A Dose of R
 
-Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the [`COVID19`](https://covid19datahub.io/articles/r.html) is an R package that allows us to pull the latest data without any hard work and consists of one function `covid19`.
+Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the [`COVID19`](https://covid19datahub.io/articles/r.html) package allows us to pull the latest data without any hard work and consists of one function - `covid19`.
 
-A function initiates an action given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said something like - given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really except for the way we describe things. We can say $y=f(x)$ or $result=f(x)$ or $z=max(x)$ or anything we like really. Logic allows us to describe things however we want, so long as we are logical. In R, we can describe the relationships above like so -
+A function does stuff given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really. We can say $y=f(x)=x^2$ or $result=f(x)$ or $z=g(x,y)=x + min(x, y)$. Once we have these definitions, we can go further and compose them together. For example, $f(g(x, y)) = (x + min(x, y))^2$. Now, the outputs of functions become the inputs for other functions.
 
 ```{r}
+library(cli)
+
 # Same as f(x) = 2x + 3
-f = function(x) {
-    2 * x + 3
+f <-  function(x) {
+  x <- x * x
+  x
 }
 
-f(x = 2)
+g <- function(x=NULL, y=NULL) {
+  result <- x + min(x, y)
+  result
+}
+
+print(f(g(3, 4)))
 ```
 
-The components of the function above are
+We now have a way of describing inputs and output a little more clearly. Instead of writing, $(3 + min(3, 4)) * (3 + min(3, 4))$ we can write $f(g(3, 4))$ or try new creations like $z(x, y)=f(g(f(x), f(y)))$ so $z(1, 2)=f(g(f(1), f(2)))=f(g(1, 4))=f(2)=4$. \
+\
+Now just take this idea about functions and expand your definition of inputs and outputs to be any number, none or many, and of any type that R supports - character, numeric, date/time, data.frame or list - all of which we'll cover. \
 
-1.  The name of the function $f$
-
-We now have a way of describing inputs and output a little more clearly. $f$ is the *name* of the rule that we apply to $x$. $f$ contains the instructions to turn $x$ into something else, often called $y$. We're just taking note of the fact that $x$ is the only thing that the function needs to apply it's logic. We could have $f(x, y, d)= x^2 + y^2 + d$ and if we wrote $f(2, 4, 5)$ then we would have a shorthand way of describing the whole - $2^2+4^2+5$. If we can write $f(2, 4, 5)$ instead of $f(2, 4, 5)=2^2+4^2+5$ that would be quite convenient.
-
-Functions - \* A So in your RStudio console, you can write the following to install the `COVID19` package.
+In your RStudio console, you can write the following to install the `COVID19` package using the `install.packages` function. If you are interested in learning more about this function, you can write `?install.packages` in your console and the documentation for the function will appear.
 
 ```{r, eval=FALSE}
-install.packages('COVID19')
+# For help menu, uncomment next line
+# ?install.packages 
+
+# If the package is not yet installed, you can install it by passing 
+# a string with the package name to the `install.packages` function
+install.packages(pkgs = c('COVID19'))
 ```
+
+For a full list of what packages are available through the `install.packages` function, please check out the [Contributed Packages](https://cran.r-project.org/web/packages/index.html) page at CRAN or scrape it yourself. \
+
+```{r}
+library(rvest)
+cran_packages <- 'https://cran.r-project.org/web/packages/available_packages_by_date.html'
+html_table(html_element(read_html(cran_packages), 'table'))
+```
+
+-   *WRITE ABOUT HELP MENU?*
 
 I'm a man of few words. So let's get to it. The two lines of code below consist of three functions. The first two are `library` and `covid19`, but the third is hidden, and I will disclose where shortly. *Functions* are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
 
