@@ -249,20 +249,38 @@ Now just take this idea about functions and expand your definition of inputs and
 <span id="cb3-4"><a href="index.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If the package is not yet installed, you can install it by passing </span></span>
 <span id="cb3-5"><a href="index.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># a string with the package name to the `install.packages` function</span></span>
 <span id="cb3-6"><a href="index.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="at">pkgs =</span> <span class="fu">c</span>(<span class="st">&#39;COVID19&#39;</span>))</span></code></pre></div>
-<p>For a full list of what packages are available through the <code>install.packages</code> function, please check out the <a href="https://cran.r-project.org/web/packages/index.html">Contributed Packages</a> page at CRAN.</p>
+<p>For a full list of what packages are available through the <code>install.packages</code> function, please check out the <a href="https://cran.r-project.org/web/packages/index.html">Contributed Packages</a> page at CRAN or scrape it yourself.<br />
+</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb4-2"><a href="index.html#cb4-2" aria-hidden="true" tabindex="-1"></a>cran_packages <span class="ot">&lt;-</span> <span class="st">&#39;https://cran.r-project.org/web/packages/available_packages_by_date.html&#39;</span></span>
+<span id="cb4-3"><a href="index.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">html_table</span>(<span class="fu">html_element</span>(<span class="fu">read_html</span>(cran_packages), <span class="st">&#39;table&#39;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 18,468 x 3
+##    Date       Package      Title                                                
+##    &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;                                                
+##  1 2021-11-23 dataCompareR Compare Two Data Frames and Summarise the Difference 
+##  2 2021-11-23 DescTools    Tools for Descriptive Statistics                     
+##  3 2021-11-23 makepipe     Pipeline Tools Inspired by &#39;GNU Make&#39;                
+##  4 2021-11-22 abtest       Bayesian A/B Testing                                 
+##  5 2021-11-22 Bestie       Bayesian Estimation of Intervention Effects          
+##  6 2021-11-22 brms         Bayesian Regression Models using &#39;Stan&#39;              
+##  7 2021-11-22 cgrcusum     Continuous Time Generalized Rapid Response CUSUM     
+##  8 2021-11-22 clustra      Clustering Trajectories Anchored at Intervention Time
+##  9 2021-11-22 cpsR         Load CPS Microdata into R Using the &#39;Census Bureau D~
+## 10 2021-11-22 crul         HTTP Client                                          
+## # ... with 18,458 more rows</code></pre>
 <ul>
 <li><em>WRITE ABOUT HELP MENU?</em></li>
 </ul>
 <p>I’m a man of few words. So let’s get to it. The two lines of code below consist of three functions. The first two are <code>library</code> and <code>covid19</code>, but the third is hidden, and I will disclose where shortly. <em>Functions</em> are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world’s your oyster) output.</p>
 <p>In this case, <code>library</code> loads <em>packages</em> from a folder in the R environment called library. You can see which ones your R environment knows about by running the function <code>.libPaths()</code>. <code>covid19</code> is a function from the <code>COVID19</code> package, and would only be available after executing <code>library(COVID19)</code> or if <code>library(COVID19)</code> is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: <code>COVID19::covid19</code>. Generally speaking, you simply use <code>library</code> because it reduces the amount of text on the page.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="index.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
 <pre><code>## Warning: package &#39;COVID19&#39; was built under R version 4.1.2</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="index.html#cb6-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
-<span id="cb6-2"><a href="index.html#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
-<span id="cb6-3"><a href="index.html#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
-<span id="cb6-4"><a href="index.html#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
-<span id="cb6-5"><a href="index.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb6-6"><a href="index.html#cb6-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="index.html#cb8-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
+<span id="cb8-2"><a href="index.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
+<span id="cb8-3"><a href="index.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
+<span id="cb8-4"><a href="index.html#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
+<span id="cb8-5"><a href="index.html#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-6"><a href="index.html#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a></p>
 </div>
 <div id="initial-setup" class="section level2" number="1.2">
@@ -294,7 +312,7 @@ Now just take this idea about functions and expand your definition of inputs and
 </ul></li>
 </ul>
 <p>Make sure you install the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> packages. Update to renv later.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
 
 </div>
 </div>

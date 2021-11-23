@@ -176,7 +176,32 @@ In your RStudio console, you can write the following to install the \texttt{COVI
 \end{Highlighting}
 \end{Shaded}
 
-For a full list of what packages are available through the \texttt{install.packages} function, please check out the \href{https://cran.r-project.org/web/packages/index.html}{Contributed Packages} page at CRAN.
+For a full list of what packages are available through the \texttt{install.packages} function, please check out the \href{https://cran.r-project.org/web/packages/index.html}{Contributed Packages} page at CRAN or scrape it yourself.\\
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(rvest)}
+\NormalTok{cran\_packages }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}https://cran.r{-}project.org/web/packages/available\_packages\_by\_date.html\textquotesingle{}}
+\FunctionTok{html\_table}\NormalTok{(}\FunctionTok{html\_element}\NormalTok{(}\FunctionTok{read\_html}\NormalTok{(cran\_packages), }\StringTok{\textquotesingle{}table\textquotesingle{}}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 18,468 x 3
+##    Date       Package      Title                                                
+##    <chr>      <chr>        <chr>                                                
+##  1 2021-11-23 dataCompareR Compare Two Data Frames and Summarise the Difference 
+##  2 2021-11-23 DescTools    Tools for Descriptive Statistics                     
+##  3 2021-11-23 makepipe     Pipeline Tools Inspired by 'GNU Make'                
+##  4 2021-11-22 abtest       Bayesian A/B Testing                                 
+##  5 2021-11-22 Bestie       Bayesian Estimation of Intervention Effects          
+##  6 2021-11-22 brms         Bayesian Regression Models using 'Stan'              
+##  7 2021-11-22 cgrcusum     Continuous Time Generalized Rapid Response CUSUM     
+##  8 2021-11-22 clustra      Clustering Trajectories Anchored at Intervention Time
+##  9 2021-11-22 cpsR         Load CPS Microdata into R Using the 'Census Bureau D~
+## 10 2021-11-22 crul         HTTP Client                                          
+## # ... with 18,458 more rows
+\end{verbatim}
 
 \begin{itemize}
 \tightlist
