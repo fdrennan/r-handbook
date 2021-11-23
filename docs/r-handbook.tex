@@ -117,7 +117,7 @@
 
 \title{A Handbook on R}
 \author{Freddy Ray Drennan}
-\date{2021-11-22}
+\date{2021-11-23}
 
 \begin{document}
 \maketitle
@@ -129,10 +129,8 @@
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-\hypertarget{a-dose-of-r}{%
-\section{A Dose of R}\label{a-dose-of-r}}
-
-Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the \href{https://covid19datahub.io/articles/r.html}{\texttt{COVID19}} package allows us to pull the latest data without any hard work and consists of one function - \texttt{covid19}.
+\hypertarget{r-is-a-functional-language}{%
+\section{R is a Functional Language}\label{r-is-a-functional-language}}
 
 A function does stuff given a set of inputs. Remember seeing equations like \(y = 2x + 3\) in algebra? We said given \(x=2\) then \(y=7\). because \(2(2) + 3 = 7\). In calculus, equations became functions with a slightly different syntax. \(f(x) = 2x + 3\). What happened to the \(y\)? Well, nothing really. We can say \(y=f(x)=x^2\) or \(result=f(x)\) or \(z=g(x,y)=x + min(x, y)\). Once we have these definitions, we can go further and compose them together. For example, \(f(g(x, y)) = (x + min(x, y))^2\). Now, the outputs of functions become the inputs for other functions.
 
@@ -161,7 +159,15 @@ A function does stuff given a set of inputs. Remember seeing equations like \(y 
 
 We now have a way of describing inputs and output a little more clearly. Instead of writing, \((3 + min(3, 4)) * (3 + min(3, 4))\) we can write \(f(g(3, 4))\) or try new creations like \(z(x, y)=f(g(f(x), f(y)))\) so \(z(1, 2)=f(g(f(1), f(2)))=f(g(1, 4))=f(2)=4\).\\
 ~\\
-Now just take this idea about functions and expand your definition of inputs and outputs to be any number, none or many, and of any type that R supports - character, numeric, date/time, data.frame or list - all of which we'll cover.\\
+Now just take this idea about functions and expand your definition of inputs and outputs to be any number, none or many, and of any type that R supports - character, numeric, date/time, data.frame or list - all of which we'll cover.
+
+\hypertarget{solve-a-problem-in-r}{%
+\chapter{Solve a Problem in R}\label{solve-a-problem-in-r}}
+
+Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the \href{https://covid19datahub.io/articles/r.html}{\texttt{COVID19}} package allows us to pull the latest data without any hard work and consists of one function - \texttt{covid19}.
+
+\hypertarget{installing-packages}{%
+\subsection{Installing Packages}\label{installing-packages}}
 
 In your RStudio console, you can write the following to install the \texttt{COVID19} package using the \texttt{install.packages} function. If you are interested in learning more about this function, you can write \texttt{?install.packages} in your console and the documentation for the function will appear.
 
@@ -176,63 +182,128 @@ In your RStudio console, you can write the following to install the \texttt{COVI
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{available-packages-on-cran}{%
+\subsection{Available Packages on CRAN}\label{available-packages-on-cran}}
+
+\hfill\break
 For a full list of what packages are available through the \texttt{install.packages} function, please check out the \href{https://cran.r-project.org/web/packages/index.html}{Contributed Packages} page at CRAN or scrape it yourself.\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(rvest)}
 \NormalTok{cran\_packages }\OtherTok{\textless{}{-}} \StringTok{\textquotesingle{}https://cran.r{-}project.org/web/packages/available\_packages\_by\_date.html\textquotesingle{}}
-\FunctionTok{html\_table}\NormalTok{(}\FunctionTok{html\_element}\NormalTok{(}\FunctionTok{read\_html}\NormalTok{(cran\_packages), }\StringTok{\textquotesingle{}table\textquotesingle{}}\NormalTok{))}
+\NormalTok{package\_data }\OtherTok{\textless{}{-}} \FunctionTok{html\_table}\NormalTok{(}\FunctionTok{html\_element}\NormalTok{(}\FunctionTok{read\_html}\NormalTok{(cran\_packages), }\StringTok{\textquotesingle{}table\textquotesingle{}}\NormalTok{))}
+\FunctionTok{print}\NormalTok{(package\_data)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 18,468 x 3
+## # A tibble: 18,469 x 3
 ##    Date       Package      Title                                                
 ##    <chr>      <chr>        <chr>                                                
 ##  1 2021-11-23 dataCompareR Compare Two Data Frames and Summarise the Difference 
 ##  2 2021-11-23 DescTools    Tools for Descriptive Statistics                     
-##  3 2021-11-23 makepipe     Pipeline Tools Inspired by 'GNU Make'                
-##  4 2021-11-22 abtest       Bayesian A/B Testing                                 
-##  5 2021-11-22 Bestie       Bayesian Estimation of Intervention Effects          
-##  6 2021-11-22 brms         Bayesian Regression Models using 'Stan'              
-##  7 2021-11-22 cgrcusum     Continuous Time Generalized Rapid Response CUSUM     
-##  8 2021-11-22 clustra      Clustering Trajectories Anchored at Intervention Time
-##  9 2021-11-22 cpsR         Load CPS Microdata into R Using the 'Census Bureau D~
-## 10 2021-11-22 crul         HTTP Client                                          
-## # ... with 18,458 more rows
+##  3 2021-11-23 dietr        Diet Estimated Trophic Levels                        
+##  4 2021-11-23 makepipe     Pipeline Tools Inspired by 'GNU Make'                
+##  5 2021-11-23 skewMLRM     Estimation for Scale-Shape Mixtures of Skew-Normal D~
+##  6 2021-11-23 symengine    Interface to the 'SymEngine' Library                 
+##  7 2021-11-22 abtest       Bayesian A/B Testing                                 
+##  8 2021-11-22 Bestie       Bayesian Estimation of Intervention Effects          
+##  9 2021-11-22 brms         Bayesian Regression Models using 'Stan'              
+## 10 2021-11-22 cgrcusum     Continuous Time Generalized Rapid Response CUSUM     
+## # ... with 18,459 more rows
 \end{verbatim}
 
-\begin{itemize}
-\tightlist
-\item
-  \emph{WRITE ABOUT HELP MENU?}
-\end{itemize}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n\_packages }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(}\FunctionTok{unique}\NormalTok{(package\_data}\SpecialCharTok{$}\NormalTok{Package))}
+\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}There are \{n\_packages\} packages on CRAN\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-I'm a man of few words. So let's get to it. The two lines of code below consist of three functions. The first two are \texttt{library} and \texttt{covid19}, but the third is hidden, and I will disclose where shortly. \emph{Functions} are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
+\begin{verbatim}
+## i There are 18469 packages on CRAN
+\end{verbatim}
+
+\hypertarget{using-functions-to-solve-a-problem}{%
+\section{Using Functions to Solve a Problem}\label{using-functions-to-solve-a-problem}}
+
+\hfill\break
+The two lines of code below consist of three functions. The first two are \texttt{library} and \texttt{covid19}, but the third is hidden - it's actually the arrow, \texttt{\textless{}-} and I will show you why in time! \emph{Functions} are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
 
 In this case, \texttt{library} loads \emph{packages} from a folder in the R environment called library. You can see which ones your R environment knows about by running the function \texttt{.libPaths()}. \texttt{covid19} is a function from the \texttt{COVID19} package, and would only be available after executing \texttt{library(COVID19)} or if \texttt{library(COVID19)} is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: \texttt{COVID19::covid19}. Generally speaking, you simply use \texttt{library} because it reduces the amount of text on the page.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
 \FunctionTok{library}\NormalTok{(COVID19)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'COVID19' was built under R version 4.1.2
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{covid\_data }\OtherTok{\textless{}{-}} \FunctionTok{covid19}\NormalTok{(}
     \AttributeTok{country =} \StringTok{\textquotesingle{}United States\textquotesingle{}}\NormalTok{, }
     \AttributeTok{start =} \StringTok{\textquotesingle{}2021{-}01{-}01\textquotesingle{}}\NormalTok{, }
     \AttributeTok{end =} \StringTok{"2021{-}11{-}21"}\NormalTok{,}
-    \AttributeTok{verbose =} \ConstantTok{FALSE}
+    \AttributeTok{verbose =} \ConstantTok{FALSE}\NormalTok{, }
+    \AttributeTok{level =} \DecValTok{2}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{glimpse}\NormalTok{(covid\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 18,200
+## Columns: 47
+## $ id                                  <chr> "10b692cc", "10b692cc", "10b692cc"~
+## $ date                                <date> 2021-01-01, 2021-01-02, 2021-01-0~
+## $ confirmed                           <int> 122, 122, 122, 122, 122, 124, 125,~
+## $ deaths                              <int> 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2~
+## $ recovered                           <int> 29, 29, 29, 29, 29, 29, 29, 29, 29~
+## $ tests                               <int> 27102, 27132, 27143, 27419, 27525,~
+## $ vaccines                            <int> 3052, 3052, 3052, 3094, 3094, 3105~
+## $ people_vaccinated                   <int> 3051, 3051, 3051, 3093, 3093, 3104~
+## $ people_fully_vaccinated             <int> 1, 1, 1, 1, 1, 1, 1, 1, 95, 181, 3~
+## $ hosp                                <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ icu                                 <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ vent                                <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ school_closing                      <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ workplace_closing                   <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ cancel_events                       <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ gatherings_restrictions             <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ transport_closing                   <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ stay_home_restrictions              <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ internal_movement_restrictions      <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ international_movement_restrictions <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ information_campaigns               <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ testing_policy                      <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ contact_tracing                     <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ facial_coverings                    <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ vaccination_policy                  <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ elderly_people_protection           <int> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ government_response_index           <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ stringency_index                    <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ containment_health_index            <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ economic_support_index              <dbl> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ administrative_area_level           <int> 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2~
+## $ administrative_area_level_1         <chr> "United States", "United States", ~
+## $ administrative_area_level_2         <chr> "Northern Mariana Islands", "North~
+## $ administrative_area_level_3         <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ latitude                            <dbl> 14.15569, 14.15569, 14.15569, 14.1~
+## $ longitude                           <dbl> 145.2119, 145.2119, 145.2119, 145.~
+## $ population                          <int> 55144, 55144, 55144, 55144, 55144,~
+## $ iso_alpha_3                         <chr> "USA", "USA", "USA", "USA", "USA",~
+## $ iso_alpha_2                         <chr> "US", "US", "US", "US", "US", "US"~
+## $ iso_numeric                         <int> 840, 840, 840, 840, 840, 840, 840,~
+## $ iso_currency                        <chr> "USD", "USD", "USD", "USD", "USD",~
+## $ key_local                           <chr> "69", "69", "69", "69", "69", "69"~
+## $ key_google_mobility                 <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ key_apple_mobility                  <chr> "Northern Mariana Islands", "North~
+## $ key_jhu_csse                        <chr> "US69", "US69", "US69", "US69", "U~
+## $ key_nuts                            <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ key_gadm                            <chr> "MNP", "MNP", "MNP", "MNP", "MNP",~
+\end{verbatim}
 
 \href{https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized\#:~:text=To\%20identify\%20if\%20an\%20R\%20object\%20is\%20a\%20vector\%20\%2C\%20I,a\%20vector\%20or\%20False\%20otherwise.}{How do I know if a function is vectorized}
 
