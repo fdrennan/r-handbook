@@ -17,9 +17,9 @@ site: bookdown::bookdown_site
 
 ## A Dose of R
 
-Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the [COVID19 Datahub](https://covid19datahub.io/articles/r.html) has an R package that allows us to pull the latest data without any hard work. 
+Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the [`COVID19`](https://covid19datahub.io/articles/r.html) is an R package that allows us to pull the latest data without any hard work and consists of one function `covid19`.
 
-The first thing I notice when I come to this link is `install.packages("COVID19")` right in the front of the page. `install.packages` is called a function. A function *does things* given a set of inputs. Remember the equation $y = 2x + 3$ or something like it? What did we say? We said something like - given $x=2$ then $y=7$. We put in a $2$ for $x$, $2(2) + 3$ and then say $y=7$. When we got to calculus, equations became functions with a slightly different look. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really except for the way we describe things. We can say $y=f(x)$ or $result=f(x)$ or $z=g(x)$ or anything we like really. Logic allows us to describe things however we want, so long as we are logical. In R, we can describe the relationships above like so - 
+A function initiates an action given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said something like - given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really except for the way we describe things. We can say $y=f(x)$ or $result=f(x)$ or $z=max(x)$ or anything we like really. Logic allows us to describe things however we want, so long as we are logical. In R, we can describe the relationships above like so -
 
 ```{r}
 # Same as f(x) = 2x + 3
@@ -29,23 +29,22 @@ f = function(x) {
 
 f(x = 2)
 ```
-The components of the function above are 
 
-1. The name of the function $f$  
+The components of the function above are
 
-We now have a way of describing inputs and output a little more clearly. $f$ is the _name_ of the rule that we apply to $x$. $f$ contains the instructions to turn $x$ into something else, often called $y$. We're just taking note of the fact that $x$ is the only thing that the function needs to apply it's logic. We could have $f(x, y, d)= x^2 + y^2 + d$ and if we wrote $f(2, 4, 5)$ then we would have a shorthand way of describing the whole - $2^2+4^2+5$. If we can write $f(2, 4, 5)$ instead of $f(2, 4, 5)=2^2+4^2+5$ that would be quite convenient. 
+1.  The name of the function $f$
 
-Functions -
-* A
-So in your RStudio console, you can write the following to install the `COVID19` package. 
+We now have a way of describing inputs and output a little more clearly. $f$ is the *name* of the rule that we apply to $x$. $f$ contains the instructions to turn $x$ into something else, often called $y$. We're just taking note of the fact that $x$ is the only thing that the function needs to apply it's logic. We could have $f(x, y, d)= x^2 + y^2 + d$ and if we wrote $f(2, 4, 5)$ then we would have a shorthand way of describing the whole - $2^2+4^2+5$. If we can write $f(2, 4, 5)$ instead of $f(2, 4, 5)=2^2+4^2+5$ that would be quite convenient.
+
+Functions - \* A So in your RStudio console, you can write the following to install the `COVID19` package.
+
 ```{r, eval=FALSE}
 install.packages('COVID19')
 ```
 
-I'm a man of few words. So let's get to it. The two lines of code below consist of three functions. The first two are `library` and `covid19`, but the third is hidden, and I will disclose where shortly. _Functions_ are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output. 
+I'm a man of few words. So let's get to it. The two lines of code below consist of three functions. The first two are `library` and `covid19`, but the third is hidden, and I will disclose where shortly. *Functions* are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
 
-In this case, `library` loads _packages_ from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. `covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
-
+In this case, `library` loads *packages* from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. `covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
 
 ```{r}
 library(COVID19)
@@ -61,12 +60,7 @@ covid_data <- covid19(
 
 ```
 
-
-
 [How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
-
-
-
 
 ## Initial Setup
 
