@@ -17,7 +17,7 @@ site: bookdown::bookdown_site
 
 ## R is a Functional Language
 
-A function does stuff given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really. We can say $y=f(x)=x^2$ or $result=f(x)$ or $z=g(x,y)=x + min(x, y)$. Once we have these definitions, we can go further and compose them together. For example, $f(g(x, y)) = (x + min(x, y))^2$. Now, the outputs of functions become the inputs for other functions.
+A function does stuff given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really. We can say $y=f(x)=x^2$ or $result=f(x)$ or $z=g(x,y)=x + min(x, y)$. Once we have these definitions, we can go further and compose them together. For example, $f(g(x, y)) = (x + min(x, y))^2$. The outputs of functions become the inputs for other functions.
 
 ```{r}
 library(cli)
@@ -62,7 +62,7 @@ install.packages(pkgs = c('COVID19'))
 \
 For a full list of what packages are available through the `install.packages` function, please check out the [Contributed Packages](https://cran.r-project.org/web/packages/index.html) page at CRAN or scrape it yourself.\
 
-```{r}
+```{r, cache=TRUE}
 library(rvest)
 cran_packages <- 'https://cran.r-project.org/web/packages/available_packages_by_date.html'
 package_data <- html_table(html_element(read_html(cran_packages), 'table'))
@@ -73,16 +73,19 @@ cli_alert_info('There are {n_packages} packages on CRAN')
 
 ## Using Functions to Solve a Problem
 
-\
 The code below consists of three different functions. The first two are `library` and `covid19`, but the third is hidden - it's actually the arrow, `<-` if you execute `` `<-`(a, 1) `` the output of the function actually creates the variable `a` within your session! *Functions* are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
 
 In this case, `library` loads packages from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. The dot in front of `.libPaths()` just means that the author intended it to be hidden, which doesn't really mean much to us. When you run `install.packages` that code is at a path in the `.libPaths()` output.
 
 `covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, cache=FALSE}
 library(tidyverse)
+library(purrr)
 library(COVID19)
+```
+
+```{r, warning=FALSE, message=FALSE, cache=TRUE}
 covid_data <- covid19(
     country = 'United States', 
     start = '2021-01-01', 
@@ -90,7 +93,7 @@ covid_data <- covid19(
     verbose = FALSE, 
     level = 2
 )
-covid_data
+glimpse(covid_data)
 ```
 
 Let's look at what happened - we passed a few inputs and received a dataframe. A dataframe is a list with the requirement that all elements of the list are atomic vectors of equal length. Let's look at what that means.
@@ -110,7 +113,7 @@ iwalk(
 When you have a list of things, you can apply a function to each item in the list. So in the list above, we have 47 atomic vectors. What does that mean? An atomic vector is like a list, but it has to contain the same thing in each cell.
 
 [How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)\
-[Vectorization in R](￼￼https://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/)
+[Vectorization in R](https://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/)
 
 ```{r}
 vector_example <- c(1, 'a', TRUE)

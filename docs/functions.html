@@ -24,7 +24,7 @@
 <meta name="author" content="Freddy Ray Drennan" />
 
 
-<meta name="date" content="2021-11-23" />
+<meta name="date" content="2021-11-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -224,11 +224,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Vectors</h2>
 <p>Vectors are containers information of similar type. You can think of them as having <span class="math inline">\(1*n\)</span> cells where <span class="math inline">\(n\)</span> is any positive integer, and make up the rows and columns of tables. Vectors always contain the same type of value. R has many different types of vectors, but the most common are <strong>numeric</strong>, <strong>character</strong>, and <strong>logical</strong> (<strong>TRUE</strong>/<strong>FALSE</strong>).</p>
 <p>Vectors are cool. I like to think of them as boxes that can only be stacked on top of one another.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="functions.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="functions.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="functions.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="functions.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="functions.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="st">&#39;a&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="functions.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">1</span>, <span class="st">&#39;a&#39;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
 <div id="functions-1" class="section level2" number="3.2">
@@ -236,45 +236,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Functions</strong> are containers where anything or nothing can happen, but whatever happens, it happens the same way every single time. They allow for generalization of complicated ideas and routines that we wish to repeat over and over again. A function may have an input, but no output. It may have an output, but no input, both or none. If it’s something you need to do repeatedly, or containing code makes your program easier to read, then write a function for that process.</p>
 <p><strong>Rule 4: Functions have inputs, outputs, and a body.</strong> A function can have multiple outputs, but given a particular set of inputs, the solution should never change assuming you are not developing a function with randomness built in.</p>
 <p>R has a built-in <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Constants.html">constant</a> called <code>letters</code>. This means that no matter where you are writing R, <code>letters</code> will be available to you. We see that <code>letters</code> is a <strong>character</strong> <strong>vector</strong> in our program below, and use the composition of functions to create a program that describes <code>letters</code>.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="functions.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(letters)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="functions.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(letters)</span></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
 ## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
 <p>Next, we can use some functions which take in pretty much any object that exists in R and spits back information regarding the <code>letters</code> data.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="functions.html#cb120-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb120-2"><a href="functions.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  print_information <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb120-3"><a href="functions.html#cb120-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-4"><a href="functions.html#cb120-4" aria-hidden="true" tabindex="-1"></a>    variable_name <span class="ot">=</span> <span class="fu">deparse1</span>(<span class="fu">substitute</span>(x))</span>
-<span id="cb120-5"><a href="functions.html#cb120-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-6"><a href="functions.html#cb120-6" aria-hidden="true" tabindex="-1"></a>    length_x <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb120-7"><a href="functions.html#cb120-7" aria-hidden="true" tabindex="-1"></a>    typeof_x <span class="ot">&lt;-</span> <span class="fu">typeof</span>(x)</span>
-<span id="cb120-8"><a href="functions.html#cb120-8" aria-hidden="true" tabindex="-1"></a>    is_vec_x <span class="ot">&lt;-</span> <span class="fu">is.vector</span>(x)</span>
-<span id="cb120-9"><a href="functions.html#cb120-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-10"><a href="functions.html#cb120-10" aria-hidden="true" tabindex="-1"></a>    meta_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb120-11"><a href="functions.html#cb120-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">length =</span> length_x, </span>
-<span id="cb120-12"><a href="functions.html#cb120-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> typeof_x, </span>
-<span id="cb120-13"><a href="functions.html#cb120-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">is_vector =</span> is_vec_x</span>
-<span id="cb120-14"><a href="functions.html#cb120-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb120-15"><a href="functions.html#cb120-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-16"><a href="functions.html#cb120-16" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert</span>(<span class="st">&#39;Information about {variable_name}&#39;</span>)</span>
-<span id="cb120-17"><a href="functions.html#cb120-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-18"><a href="functions.html#cb120-18" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;{variable_name} is a 1x{length_x} dimensional&quot;</span>)</span>
-<span id="cb120-19"><a href="functions.html#cb120-19" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;&quot;</span>)</span>
-<span id="cb120-20"><a href="functions.html#cb120-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-21"><a href="functions.html#cb120-21" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">iwalk</span>(meta_list, <span class="cf">function</span>(x, index) {</span>
-<span id="cb120-22"><a href="functions.html#cb120-22" aria-hidden="true" tabindex="-1"></a>      cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;{index} {x} is type {typeof(x)}&#39;</span>))</span>
-<span id="cb120-23"><a href="functions.html#cb120-23" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb120-24"><a href="functions.html#cb120-24" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb120-25"><a href="functions.html#cb120-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(meta_list)</span>
-<span id="cb120-26"><a href="functions.html#cb120-26" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb120-27"><a href="functions.html#cb120-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb120-28"><a href="functions.html#cb120-28" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&#39;Execute print_information&#39;</span>)</span>
-<span id="cb120-29"><a href="functions.html#cb120-29" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">print_information</span>(mtcars)</span>
-<span id="cb120-30"><a href="functions.html#cb120-30" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_success</span>(<span class="st">&#39;Execute print_information complete&#39;</span>)</span>
-<span id="cb120-31"><a href="functions.html#cb120-31" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb120-32"><a href="functions.html#cb120-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(output)</span>
-<span id="cb120-33"><a href="functions.html#cb120-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb120-34"><a href="functions.html#cb120-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb120-35"><a href="functions.html#cb120-35" aria-hidden="true" tabindex="-1"></a><span class="fu">main</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="functions.html#cb121-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb121-2"><a href="functions.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  print_information <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb121-3"><a href="functions.html#cb121-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-4"><a href="functions.html#cb121-4" aria-hidden="true" tabindex="-1"></a>    variable_name <span class="ot">=</span> <span class="fu">deparse1</span>(<span class="fu">substitute</span>(x))</span>
+<span id="cb121-5"><a href="functions.html#cb121-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-6"><a href="functions.html#cb121-6" aria-hidden="true" tabindex="-1"></a>    length_x <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb121-7"><a href="functions.html#cb121-7" aria-hidden="true" tabindex="-1"></a>    typeof_x <span class="ot">&lt;-</span> <span class="fu">typeof</span>(x)</span>
+<span id="cb121-8"><a href="functions.html#cb121-8" aria-hidden="true" tabindex="-1"></a>    is_vec_x <span class="ot">&lt;-</span> <span class="fu">is.vector</span>(x)</span>
+<span id="cb121-9"><a href="functions.html#cb121-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-10"><a href="functions.html#cb121-10" aria-hidden="true" tabindex="-1"></a>    meta_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb121-11"><a href="functions.html#cb121-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">length =</span> length_x, </span>
+<span id="cb121-12"><a href="functions.html#cb121-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> typeof_x, </span>
+<span id="cb121-13"><a href="functions.html#cb121-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">is_vector =</span> is_vec_x</span>
+<span id="cb121-14"><a href="functions.html#cb121-14" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb121-15"><a href="functions.html#cb121-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-16"><a href="functions.html#cb121-16" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert</span>(<span class="st">&#39;Information about {variable_name}&#39;</span>)</span>
+<span id="cb121-17"><a href="functions.html#cb121-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-18"><a href="functions.html#cb121-18" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;{variable_name} is a 1x{length_x} dimensional&quot;</span>)</span>
+<span id="cb121-19"><a href="functions.html#cb121-19" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&quot;&quot;</span>)</span>
+<span id="cb121-20"><a href="functions.html#cb121-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-21"><a href="functions.html#cb121-21" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">iwalk</span>(meta_list, <span class="cf">function</span>(x, index) {</span>
+<span id="cb121-22"><a href="functions.html#cb121-22" aria-hidden="true" tabindex="-1"></a>      cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;{index} {x} is type {typeof(x)}&#39;</span>))</span>
+<span id="cb121-23"><a href="functions.html#cb121-23" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb121-24"><a href="functions.html#cb121-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb121-25"><a href="functions.html#cb121-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(meta_list)</span>
+<span id="cb121-26"><a href="functions.html#cb121-26" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb121-27"><a href="functions.html#cb121-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb121-28"><a href="functions.html#cb121-28" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_info</span>(<span class="st">&#39;Execute print_information&#39;</span>)</span>
+<span id="cb121-29"><a href="functions.html#cb121-29" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">print_information</span>(mtcars)</span>
+<span id="cb121-30"><a href="functions.html#cb121-30" aria-hidden="true" tabindex="-1"></a>  cli<span class="sc">::</span><span class="fu">cli_alert_success</span>(<span class="st">&#39;Execute print_information complete&#39;</span>)</span>
+<span id="cb121-31"><a href="functions.html#cb121-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb121-32"><a href="functions.html#cb121-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(output)</span>
+<span id="cb121-33"><a href="functions.html#cb121-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb121-34"><a href="functions.html#cb121-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-35"><a href="functions.html#cb121-35" aria-hidden="true" tabindex="-1"></a><span class="fu">main</span>()</span></code></pre></div>
 <pre><code>## i Execute print_information</code></pre>
 <pre><code>## &gt; Information about mtcars</code></pre>
 <pre><code>## i mtcars is a 1x11 dimensional</code></pre>

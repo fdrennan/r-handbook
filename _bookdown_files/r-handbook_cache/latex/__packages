@@ -1,0 +1,13 @@
+base
+cli
+rvest
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+COVID19
