@@ -36,11 +36,11 @@ g <- function(x=NULL, y=NULL) {
 print(f(g(3, 4)))
 ```
 
-We now have a way of describing inputs and output a little more clearly. Instead of writing, $(3 + min(3, 4)) * (3 + min(3, 4))$ we can write $f(g(3, 4))$ or try new creations like $z(x, y)=f(g(f(x), f(y)))$ so $z(1, 2)=f(g(f(1), f(2)))=f(g(1, 4))=f(2)=4$. \
+We now have a way of describing inputs and output a little more clearly. Instead of writing, $(3 + min(3, 4)) * (3 + min(3, 4))$ we can write $f(g(3, 4))$ or try new creations like $z(x, y)=f(g(f(x), f(y)))$ so $z(1, 2)=f(g(f(1), f(2)))=f(g(1, 4))=f(2)=4$.\
 \
 Now just take this idea about functions and expand your definition of inputs and outputs to be any number, none or many, and of any type that R supports - character, numeric, date/time, data.frame or list - all of which we'll cover.
 
-# Solve a Problem in R
+## Solve a Problem in R
 
 Let's solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the [`COVID19`](https://covid19datahub.io/articles/r.html) package allows us to pull the latest data without any hard work and consists of one function - `covid19`.
 
@@ -60,7 +60,7 @@ install.packages(pkgs = c('COVID19'))
 ### Available Packages on CRAN
 
 \
-For a full list of what packages are available through the `install.packages` function, please check out the [Contributed Packages](https://cran.r-project.org/web/packages/index.html) page at CRAN or scrape it yourself. \
+For a full list of what packages are available through the `install.packages` function, please check out the [Contributed Packages](https://cran.r-project.org/web/packages/index.html) page at CRAN or scrape it yourself.\
 
 ```{r}
 library(rvest)
@@ -74,9 +74,11 @@ cli_alert_info('There are {n_packages} packages on CRAN')
 ## Using Functions to Solve a Problem
 
 \
-The two lines of code below consist of three functions. The first two are `library` and `covid19`, but the third is hidden - it's actually the arrow, `<-` and I will show you why in time! *Functions* are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
+The code below consists of three different functions. The first two are `library` and `covid19`, but the third is hidden - it's actually the arrow, `<-` if you execute `` `<-`(a, 1) `` the output of the function actually creates the variable `a` within your session! *Functions* are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world's your oyster) output.
 
-In this case, `library` loads *packages* from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. `covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
+In this case, `library` loads packages from a folder in the R environment called library. You can see which ones your R environment knows about by running the function `.libPaths()`. The dot in front of `.libPaths()` just means that the author intended it to be hidden, which doesn't really mean much to us. When you run `install.packages` that code is at a path in the `.libPaths()` output.
+
+`covid19` is a function from the `COVID19` package, and would only be available after executing `library(COVID19)` or if `library(COVID19)` is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: `COVID19::covid19`. Generally speaking, you simply use `library` because it reduces the amount of text on the page.
 
 ```{r, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -88,13 +90,45 @@ covid_data <- covid19(
     verbose = FALSE, 
     level = 2
 )
+covid_data
 ```
+
+Let's look at what happened - we passed a few inputs and received a dataframe. A dataframe is a list with the requirement that all elements of the list are atomic vectors of equal length. Let's look at what that means.
 
 ```{r}
-glimpse(covid_data)
+iwalk(
+  covid_data,
+  function(item, idx_nm) {
+    length_item <- length(item)
+    item_type <- typeof(item)
+    cli_alert('{idx_nm} is a {item_type} with length {length_item}')
+    print(unique(item)[1:3])
+  }
+)
 ```
 
-[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)
+When you have a list of things, you can apply a function to each item in the list. So in the list above, we have 47 atomic vectors. What does that mean? An atomic vector is like a list, but it has to contain the same thing in each cell.
+
+[How do I know if a function is vectorized](https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.)\
+[Vectorization in R](￼￼https://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/)
+
+```{r}
+vector_example <- c(1, 'a', TRUE)
+list_example <- list(1, 'a', TRUE)
+
+map_chr(vector_example, typeof)
+map_chr(list_example, typeof)
+```
+
+With the knowledge of vectors and lists, what can we do? Well, the first thing I notice is that some of the vectors are completely `NA`. Let's check the number of NA values in each vector.
+
+```{r}
+all_na <- function(item) {
+  sum(is.na(item))==length(item) 
+}
+covid_data <- discard(covid_data, all_na)
+covid_data
+```
 
 ## Initial Setup
 
