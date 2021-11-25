@@ -17,7 +17,58 @@ site: bookdown::bookdown_site
 
 ## R is a Functional Language
 
-A function does stuff given a set of inputs. Remember seeing equations like $y = 2x + 3$ in algebra? We said given $x=2$ then $y=7$. because $2(2) + 3 = 7$. In calculus, equations became functions with a slightly different syntax. $f(x) = 2x + 3$. What happened to the $y$? Well, nothing really. We can say $y=f(x)=x^2$ or $result=f(x)$ or $z=g(x,y)=x + min(x, y)$. Once we have these definitions, we can go further and compose them together. For example, $f(g(x, y)) = (x + min(x, y))^2$. The outputs of functions become the inputs for other functions.
+Functions are often described as boxes. These boxes take inputs and create outputs. I think understanding what we are able to do with functions will help you understand how to solve the problems you are going to face. 
+
+The following unnamed function, a special case called an anonomous function or lambda function, $(x, y)\rightarrow x(x + y)$ has two critical components. Don't be afraid of the right arrow. We just say that $x$ and $y$ map _onto_ whatever expression is on the right hand side. 
+
+1. The function has any number of inputs, in the case above there are two: $(x,y)$
+2. The function has a body which defines the output, $x(x + y)$ 
+3. We can express evaluation of the function by following the function with inputs:
+  * $((x, y)\rightarrow x(x + y))(1, 2)$ which evaluates to $(1, 2) \rightarrow 1 * (1 + 2) = 3$
+
+
+When we write functions in R we will use both named and unnamed functions. But lets start with the first example. This function is an anonymous function. We haven't given it a name yet. But we can call it all the same.
+
+```{r}
+function(x, y) x * (x + y)
+```
+
+```{r}
+# Wrapping function in () means evaluate now
+(function(x, y) x * (x + y))(1, 2)
+```
+
+Now wouldn't it be nice if we could take this function with us? Let's give it a name and update our notation $xy\_calc(x, y)\ = x(x + y)$
+
+```{r}
+library(cli)
+
+xy_calc <- function(x, y) {
+  x_name <- deparse1(substitute(x))
+  y_name <- deparse1(substitute(y))
+  cli_alert_info('{x_name} is {x} and {y_name} is {y}')
+  result <- x * (x + y)
+  cli_alert_success('result is {result}')
+  result
+}
+
+new_calc <- function(a, b) xy_calc(xy_calc(a, a), xy_calc(b, b))
+```
+
+Now we can describe silly things like this $newcalc(x, y) \rightarrow xy\_calc(xy\_calc(x, x), xy\_calc(y,y)))$
+
+```{r}
+new_calc(1, 2)
+```
+
+
+If we were to write by hand the expression we created, it would be
+
+$$
+
+$$
+
+
 
 ```{r}
 library(cli)
