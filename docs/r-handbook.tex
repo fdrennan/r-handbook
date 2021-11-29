@@ -126,75 +126,13 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{initial-setup}{%
-\chapter{Initial Setup}\label{initial-setup}}
-
-\href{https://hackmd.io/vGRGEPo8QQyiG8gecWv71g}{Book Outline}
-
-\begin{itemize}
-\item
-  \href{https://cran.r-project.org/}{Install R}
-\item
-  \href{https://www.rstudio.com/products/rstudio/download/}{Install R Studio}
-\item
-  \href{https://cran.r-project.org/bin/windows/Rtools/}{Windows Only: Install RTools}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    When installed, run in the RStudio Console: \texttt{write(\textquotesingle{}PATH="\$\{RTOOLS40\_HOME\}\textbackslash{}\textbackslash{}usr\textbackslash{}\textbackslash{}bin;\$\{PATH\}"\textquotesingle{},\ file\ =\ "\textasciitilde{}/.Renviron",\ append\ =\ TRUE)}
-  \end{itemize}
-\item
-  \href{https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10}{Windows Only: Install WSL2}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Computer should be completely updated before install.
-  \end{itemize}
-\item
-  \href{https://git-scm.com/downloads}{Install Git}
-\item
-  \href{https://github.com/}{Create Github Account}
-\item
-  \href{https://github.com/fdrennan/r-handbook}{Fork r-handbook}
-\item
-  \href{https://docs.docker.com/get-docker/}{Install Docker and Docker Compose}
-\item
-  \href{https://aws.amazon.com/}{Create AWS Account}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Billing will be discussed in the course, but don't expect to pay much - i.e., 10-20 dollars a month for high course activity.
-  \item
-    Remember to \texttt{stop} EC2 servers when we begin using them. AWS is polite about your first few refund requests.
-  \end{itemize}
-\item
-  \href{reddit.com}{Create Reddit Account}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \href{https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c}{Follow Instructions here}
-  \end{itemize}
-\end{itemize}
-
-Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages. Update to renv later.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \hypertarget{a-tour-of-r}{%
 \chapter{A Tour of R}\label{a-tour-of-r}}
 
 \hypertarget{its-all-about-functions}{%
 \section{It's all about functions}\label{its-all-about-functions}}
 
-Functions are often described as boxes. These boxes take inputs and create outputs. I think understanding what we are able to do with functions will help you understand how to solve the problems you are going to face. What we really care about is the ability to port around complex tools that make our tasks simpler. For example, functions will allow us to do the following and much more
+I think understanding what we are able to do with functions will help you understand how to solve the problems you are going to face. What we really care about is the ability to port around complex tools that make our tasks simpler. Functions are often described as boxes. These boxes take inputs and create outputs and can do things such as
 
 \begin{itemize}
 \tightlist
@@ -208,113 +146,38 @@ Functions are often described as boxes. These boxes take inputs and create outpu
   Display our data on the internet in the form on web based applications.
 \end{itemize}
 
-\hypertarget{characteristics-of-functions}{%
-\subsection{Characteristics of functions}\label{characteristics-of-functions}}
+\hypertarget{function-names}{%
+\section{Function Names}\label{function-names}}
 
-Functions can be named or unnamed. Unnamed functions are called anonymous functions. Anonymous functions are generally used when you have a simple but unique task that is applied to multiple objects sequentially, but which also is unlikely to be repeaded anywhere else. Let's look at a few functions to get acquainted with R how they work.
-
-Functions have an input and an output. The input is whatever is contained within the parenthesis \texttt{()} and the output will be displayed below the code. We will talk more about functions later, so don't try to get too caught up in the details here. Programming is something I want you to soak in, not memorize. The \texttt{c} function creates something called a vector, which is a \(1\) dimensional matrix or table. Vectors are the singular columns or rows in a table. They do not mix types. The types you will work with are primarily logical, integer, double, character, list, NULL, closure (function).
-
-There are two functions that we should get familiar with first, but let's go with the one I think you will use more of the two, though both \texttt{list} and \texttt{c} will be functions you use daily.
+Functions can be named or unnamed. Unnamed functions are called anonymous functions. Anonymous functions are generally used when you have a simple but unique task that is applied to multiple objects sequentially, but which also is unlikely to be repeated anywhere else. For example, below we create a function which takes a value \texttt{x} and returns \texttt{x+2}. \texttt{sapply} is a special kind of function called a mapping function. It takes something (the first argument) an \texttt{X} and applies a function \texttt{FUN} to each element of \texttt{X}. In this case, the numbers 1 to 10.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{c}\NormalTok{(}\AttributeTok{integer =}\NormalTok{ 1L, }\AttributeTok{double =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+\NormalTok{add\_two }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+} \DecValTok{2}
+\FunctionTok{sapply}\NormalTok{(}\AttributeTok{X =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{FUN =}\NormalTok{ add\_two) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##   integer    double      bool character 
-##       "1"       "1"    "TRUE"       "a"
+##  [1]  3  4  5  6  7  8  9 10 11 12
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{list}\NormalTok{(}\AttributeTok{integer =}\NormalTok{ 1L, }\AttributeTok{double =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+\FunctionTok{sapply}\NormalTok{(}\AttributeTok{X =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{FUN =} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+} \DecValTok{2}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## $integer
-## [1] 1
-## 
-## $double
-## [1] 1
-## 
-## $bool
-## [1] TRUE
-## 
-## $character
-## [1] "a"
+##  [1]  3  4  5  6  7  8  9 10 11 12
 \end{verbatim}
 
-Get used to looking at data like this. We're not in Excel anymore and sometimes it makes people feel funny about not being able to ``see'' their data. When I say see, I simply mean is that look at the data below. This is a two dimensional table called a dataframe or tibble. A dataframe is a special form of a list, that requires each element be atomic (of one type) and of equal length. We can see this is true by looking at the output below.
+The input is whatever is contained within the parenthesis \texttt{()} and the output will be displayed below the code. We will talk more about functions later, so don't try to get too caught up in the details here. Programming is something I want you to soak in, not memorize.
 
-\begin{verbatim}
-## Rows: 336,776
-## Columns: 19
-## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
-## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
-## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
-## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
-## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
-## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
-## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
-## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
-## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
-## $ carrier        <chr> "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "~
-## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
-## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394~
-## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",~
-## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",~
-## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
-## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
-## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
-## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
-## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~
-\end{verbatim}
+\hypertarget{function-theory}{%
+\subsection{Function Theory}\label{function-theory}}
 
-There are \(19*336,776\) cells within this table because there are \(19\) vectors (columns) of length \(336,776\). Each element in the vector is one instance of a string, a number, a date, etc. And each type has functions that can operate on it, in a repeatable way. This is why each column (vector) is of one type, either \texttt{int}, \texttt{dbl}, \texttt{chr}, or \texttt{dttm}. There are other types in R, but we will be sticking to these for now. \texttt{int} is a special form of number called an integer - 1, 2, -1231, etc. \texttt{dbl} stands for double, a number which can contain decimal values i.e, 1.3. Not everything needs to be double, because an integer takes less memory in your computer to store. Don't get too caught up on whether or not something should be an integer or double and generally speaking you wont consciously make a choice.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(purrr)}
-\FunctionTok{library}\NormalTok{(cli)}
-\FunctionTok{iwalk}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\AttributeTok{number =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{), }\ControlFlowTok{function}\NormalTok{(item, name) }\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}\{name\} is a \{typeof(item)\}\textquotesingle{}}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## i number is a character
-\end{verbatim}
-
-\begin{verbatim}
-## i bool is a character
-\end{verbatim}
-
-\begin{verbatim}
-## i character is a character
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{iwalk}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{number =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{), }\ControlFlowTok{function}\NormalTok{(item, name) }\FunctionTok{cli\_alert\_info}\NormalTok{(}\StringTok{\textquotesingle{}\{name\} is a \{typeof(item)\}\textquotesingle{}}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## i number is a double
-\end{verbatim}
-
-\begin{verbatim}
-## i bool is a logical
-\end{verbatim}
-
-\begin{verbatim}
-## i character is a character
-\end{verbatim}
-
-The following unnamed function, a special case called an anonomous function or lambda function, \((x, y)\rightarrow x(x + y)\) has two critical components. Don't be afraid of the right arrow. We just say that \(x\) and \(y\) map \emph{onto} whatever expression is on the right hand side.
+The following unnamed function, a special case called an anonymous function or lambda function, \((x, y)\rightarrow x(x + y)\) has two critical components. Don't be afraid of the right arrow. We just say that \(x\) and \(y\) map \emph{onto} whatever expression is on the right hand side.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -410,6 +273,75 @@ Now we can describe silly things like this \(newcalc(x, y) \rightarrow xy\_calc(
 \begin{verbatim}
 ## [1] 20
 \end{verbatim}
+
+\hypertarget{vectors-and-lists}{%
+\subsection{Vectors and Lists}\label{vectors-and-lists}}
+
+The \texttt{c} function creates something called a vector, which is a \(1\) dimensional matrix or table. Vectors are the singular columns or rows in a table. They do not mix types. The types you will work with are primarily logical, integer, double, character, list, NULL, closure (function).
+
+There are two functions that we should get familiar with first, but let's go with the one I think you will use more of the two, though both \texttt{list} and \texttt{c} will be functions you use daily.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\AttributeTok{integer =}\NormalTok{ 1L, }\AttributeTok{double =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   integer    double      bool character 
+##       "1"       "1"    "TRUE"       "a"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{list}\NormalTok{(}\AttributeTok{integer =}\NormalTok{ 1L, }\AttributeTok{double =} \DecValTok{1}\NormalTok{, }\AttributeTok{bool =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{character =} \StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $integer
+## [1] 1
+## 
+## $double
+## [1] 1
+## 
+## $bool
+## [1] TRUE
+## 
+## $character
+## [1] "a"
+\end{verbatim}
+
+\hypertarget{data.frame-and-tibble}{%
+\subsection{data.frame and tibble}\label{data.frame-and-tibble}}
+
+The table below has 336,776 rows. Get used to looking at data in a different way. We're not in Excel anymore and sometimes it makes people feel funny about not being able to ``see'' their data. When I say see, I simply mean is that look at the data below. This is a two dimensional table called a dataframe or tibble. A dataframe is a special form of a list, that requires each element be atomic (of one type) and of equal length. We can see this is true by looking at the output below.
+
+\begin{verbatim}
+## Rows: 336,776
+## Columns: 19
+## $ year           <int> 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
+## $ month          <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ day            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ dep_time       <int> 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
+## $ sched_dep_time <int> 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
+## $ dep_delay      <dbl> 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
+## $ arr_time       <int> 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
+## $ sched_arr_time <int> 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
+## $ arr_delay      <dbl> 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
+## $ carrier        <chr> "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "~
+## $ flight         <int> 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
+## $ tailnum        <chr> "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N394~
+## $ origin         <chr> "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA",~
+## $ dest           <chr> "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD",~
+## $ air_time       <dbl> 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
+## $ distance       <dbl> 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
+## $ hour           <dbl> 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
+## $ minute         <dbl> 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
+## $ time_hour      <dttm> 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~
+\end{verbatim}
+
+There are \(19*336,776\) cells within this table because there are \(19\) vectors (columns) of length \(336,776\). Each element in the vector is one instance of a string, a number, a date, etc. And each type has functions that can operate on it, in a repeatable way. This is why each column (vector) is of one type, either \texttt{int}, \texttt{dbl}, \texttt{chr}, or \texttt{dttm}. There are other types in R, but we will be sticking to these for now. \texttt{int} is a special form of number called an integer - 1, 2, -1231, etc. \texttt{dbl} stands for double, a number which can contain decimal values i.e, 1.3. Not everything needs to be double, because an integer takes less memory in your computer to store. Don't get too caught up on whether or not something should be an integer or double and generally speaking you wont consciously make a choice.
 
 If we were to write by hand the expression we created, it would be
 
@@ -763,6 +695,68 @@ With the knowledge of vectors and lists, what can we do? Well, the first thing I
 ## 5 Northern Mariana Islands         US69      MNP
 ## 6 Northern Mariana Islands         US69      MNP
 \end{verbatim}
+
+\hypertarget{initial-setup}{%
+\chapter{Initial Setup}\label{initial-setup}}
+
+\href{https://hackmd.io/vGRGEPo8QQyiG8gecWv71g}{Book Outline}
+
+\begin{itemize}
+\item
+  \href{https://cran.r-project.org/}{Install R}
+\item
+  \href{https://www.rstudio.com/products/rstudio/download/}{Install R Studio}
+\item
+  \href{https://cran.r-project.org/bin/windows/Rtools/}{Windows Only: Install RTools}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When installed, run in the RStudio Console: \texttt{write(\textquotesingle{}PATH="\$\{RTOOLS40\_HOME\}\textbackslash{}\textbackslash{}usr\textbackslash{}\textbackslash{}bin;\$\{PATH\}"\textquotesingle{},\ file\ =\ "\textasciitilde{}/.Renviron",\ append\ =\ TRUE)}
+  \end{itemize}
+\item
+  \href{https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10}{Windows Only: Install WSL2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Computer should be completely updated before install.
+  \end{itemize}
+\item
+  \href{https://git-scm.com/downloads}{Install Git}
+\item
+  \href{https://github.com/}{Create Github Account}
+\item
+  \href{https://github.com/fdrennan/r-handbook}{Fork r-handbook}
+\item
+  \href{https://docs.docker.com/get-docker/}{Install Docker and Docker Compose}
+\item
+  \href{https://aws.amazon.com/}{Create AWS Account}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Billing will be discussed in the course, but don't expect to pay much - i.e., 10-20 dollars a month for high course activity.
+  \item
+    Remember to \texttt{stop} EC2 servers when we begin using them. AWS is polite about your first few refund requests.
+  \end{itemize}
+\item
+  \href{reddit.com}{Create Reddit Account}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c}{Follow Instructions here}
+  \end{itemize}
+\end{itemize}
+
+Make sure you install the \href{https://www.tidyverse.org/}{\texttt{tidyverse}} packages. Update to renv later.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{\textquotesingle{}tidyverse\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{what-is-r}{%
 \chapter{What is R}\label{what-is-r}}

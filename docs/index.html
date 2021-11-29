@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="a-tour-of-r.html"/>
+<link rel="next" href="initial-setup.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -137,20 +137,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Initial Setup</a></li>
-<li class="chapter" data-level="2" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html"><i class="fa fa-check"></i><b>2</b> A Tour of R</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> A Tour of R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#its-all-about-functions"><i class="fa fa-check"></i><b>2.1</b> It’s all about functions</a>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#its-all-about-functions"><i class="fa fa-check"></i><b>1.1</b> It’s all about functions</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#function-names"><i class="fa fa-check"></i><b>1.2</b> Function Names</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#characteristics-of-functions"><i class="fa fa-check"></i><b>2.1.1</b> Characteristics of functions</a></li>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#function-theory"><i class="fa fa-check"></i><b>1.2.1</b> Function Theory</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#vectors-and-lists"><i class="fa fa-check"></i><b>1.2.2</b> Vectors and Lists</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#data.frame-and-tibble"><i class="fa fa-check"></i><b>1.2.3</b> data.frame and tibble</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#solve-a-problem-in-r"><i class="fa fa-check"></i><b>2.2</b> Solve a Problem in R</a>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#solve-a-problem-in-r"><i class="fa fa-check"></i><b>1.3</b> Solve a Problem in R</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#installing-packages"><i class="fa fa-check"></i><b>2.2.1</b> Installing Packages</a></li>
-<li class="chapter" data-level="2.2.2" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#available-packages-on-cran"><i class="fa fa-check"></i><b>2.2.2</b> Available Packages on CRAN</a></li>
-<li class="chapter" data-level="2.2.3" data-path="a-tour-of-r.html"><a href="a-tour-of-r.html#using-functions-to-solve-a-problem"><i class="fa fa-check"></i><b>2.2.3</b> Using Functions to Solve a Problem</a></li>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#installing-packages"><i class="fa fa-check"></i><b>1.3.1</b> Installing Packages</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#available-packages-on-cran"><i class="fa fa-check"></i><b>1.3.2</b> Available Packages on CRAN</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#using-functions-to-solve-a-problem"><i class="fa fa-check"></i><b>1.3.3</b> Using Functions to Solve a Problem</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="2" data-path="initial-setup.html"><a href="initial-setup.html"><i class="fa fa-check"></i><b>2</b> Initial Setup</a></li>
 <li class="chapter" data-level="3" data-path="what-is-r.html"><a href="what-is-r.html"><i class="fa fa-check"></i><b>3</b> What is R</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="what-is-r.html"><a href="what-is-r.html#types-of-problems-you-can-solve"><i class="fa fa-check"></i><b>3.1</b> Types of Problems You Can Solve</a></li>
@@ -226,37 +229,383 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>Freddy Ray Drennan</em></p>
 <p class="date"><em>2021-11-26</em></p>
 </div>
-<div id="initial-setup" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Initial Setup</h1>
-<p><a href="https://hackmd.io/vGRGEPo8QQyiG8gecWv71g">Book Outline</a></p>
+<div id="a-tour-of-r" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> A Tour of R</h1>
+<div id="its-all-about-functions" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> It’s all about functions</h2>
+<p>I think understanding what we are able to do with functions will help you understand how to solve the problems you are going to face. What we really care about is the ability to port around complex tools that make our tasks simpler. Functions are often described as boxes. These boxes take inputs and create outputs and can do things such as</p>
 <ul>
-<li><p><a href="https://cran.r-project.org/">Install R</a></p></li>
-<li><p><a href="https://www.rstudio.com/products/rstudio/download/">Install R Studio</a></p></li>
-<li><p><a href="https://cran.r-project.org/bin/windows/Rtools/">Windows Only: Install RTools</a></p>
-<ul>
-<li>When installed, run in the RStudio Console: <code>write('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', file = "~/.Renviron", append = TRUE)</code></li>
-</ul></li>
-<li><p><a href="https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10">Windows Only: Install WSL2</a></p>
-<ul>
-<li>Computer should be completely updated before install.</li>
-</ul></li>
-<li><p><a href="https://git-scm.com/downloads">Install Git</a></p></li>
-<li><p><a href="https://github.com/">Create Github Account</a></p></li>
-<li><p><a href="https://github.com/fdrennan/r-handbook">Fork r-handbook</a></p></li>
-<li><p><a href="https://docs.docker.com/get-docker/">Install Docker and Docker Compose</a></p></li>
-<li><p><a href="https://aws.amazon.com/">Create AWS Account</a></p>
-<ul>
-<li>Billing will be discussed in the course, but don’t expect to pay much - i.e., 10-20 dollars a month for high course activity.</li>
-<li>Remember to <code>stop</code> EC2 servers when we begin using them. AWS is polite about your first few refund requests.</li>
-</ul></li>
-<li><p><a href="reddit.com">Create Reddit Account</a></p>
-<ul>
-<li><a href="https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c">Follow Instructions here</a></li>
-</ul></li>
+<li>Access/build APIs and databases, store data locally or remote.</li>
+<li>Build models and make predictions based on the data we collect.</li>
+<li>Edit and manipulate our data into new, more useful forms</li>
+<li>Display our data on the internet in the form on web based applications.</li>
 </ul>
-<p>Make sure you install the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a> packages. Update to renv later.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;tidyverse&#39;</span>)</span></code></pre></div>
+</div>
+<div id="function-names" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Function Names</h2>
+<p>Functions can be named or unnamed. Unnamed functions are called anonymous functions. Anonymous functions are generally used when you have a simple but unique task that is applied to multiple objects sequentially, but which also is unlikely to be repeated anywhere else. For example, below we create a function which takes a value <code>x</code> and returns <code>x+2</code>. <code>sapply</code> is a special kind of function called a mapping function. It takes something (the first argument) an <code>X</code> and applies a function <code>FUN</code> to each element of <code>X</code>. In this case, the numbers 1 to 10.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>add_two <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="at">X =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">FUN =</span> add_two) </span></code></pre></div>
+<pre><code>##  [1]  3  4  5  6  7  8  9 10 11 12</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="index.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="at">X =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">FUN =</span> <span class="cf">function</span>(x) x <span class="sc">+</span> <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##  [1]  3  4  5  6  7  8  9 10 11 12</code></pre>
+<p>The input is whatever is contained within the parenthesis <code>()</code> and the output will be displayed below the code. We will talk more about functions later, so don’t try to get too caught up in the details here. Programming is something I want you to soak in, not memorize.</p>
+<div id="function-theory" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Function Theory</h3>
+<p>The following unnamed function, a special case called an anonymous function or lambda function, <span class="math inline">\((x, y)\rightarrow x(x + y)\)</span> has two critical components. Don’t be afraid of the right arrow. We just say that <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> map <em>onto</em> whatever expression is on the right hand side.</p>
+<ol style="list-style-type: decimal">
+<li>The function has any number of inputs, in the case above there are two: <span class="math inline">\((x,y)\)</span></li>
+<li>The function has a body which defines the output, <span class="math inline">\(x(x + y)\)</span></li>
+<li>We can express evaluation of the function by following the function with inputs:</li>
+</ol>
+<ul>
+<li><span class="math inline">\(((x, y)\rightarrow x(x + y))(1, 2)\)</span> which evaluates to <span class="math inline">\((1, 2) \rightarrow 1 * (1 + 2) = 3\)</span></li>
+</ul>
+<p>When we write functions in R we will use both named and unnamed functions. But lets start with the first example. This function is an anonymous function. We haven’t given it a name yet. But we can call it all the same.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="index.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x, y) x <span class="sc">*</span> (x <span class="sc">+</span> y)</span></code></pre></div>
+<pre><code>## function(x, y) x * (x + y)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="index.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrapping function in () means evaluate now</span></span>
+<span id="cb7-2"><a href="index.html#cb7-2" aria-hidden="true" tabindex="-1"></a>(<span class="cf">function</span>(x, y) x <span class="sc">*</span> (x <span class="sc">+</span> y))(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>Now wouldn’t it be nice if we could take this function with us? Let’s give it a name and update our notation <span class="math inline">\(xy\_calc(x, y)\ \rightarrow x(x + y)\)</span></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="index.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cli)</span>
+<span id="cb9-2"><a href="index.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="index.html#cb9-3" aria-hidden="true" tabindex="-1"></a>xy_calc <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb9-4"><a href="index.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  x_name <span class="ot">&lt;-</span> <span class="fu">deparse1</span>(<span class="fu">substitute</span>(x))</span>
+<span id="cb9-5"><a href="index.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  y_name <span class="ot">&lt;-</span> <span class="fu">deparse1</span>(<span class="fu">substitute</span>(y))</span>
+<span id="cb9-6"><a href="index.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cli_alert_info</span>(<span class="st">&#39;{x_name} is {x} and {y_name} is {y}&#39;</span>)</span>
+<span id="cb9-7"><a href="index.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> x <span class="sc">*</span> (x <span class="sc">+</span> y)</span>
+<span id="cb9-8"><a href="index.html#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cli_alert_success</span>(<span class="st">&#39;result is {result}&#39;</span>)</span>
+<span id="cb9-9"><a href="index.html#cb9-9" aria-hidden="true" tabindex="-1"></a>  result</span>
+<span id="cb9-10"><a href="index.html#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="index.html#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="index.html#cb9-12" aria-hidden="true" tabindex="-1"></a>new_calc <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) <span class="fu">xy_calc</span>(<span class="fu">xy_calc</span>(a, a), <span class="fu">xy_calc</span>(b, b))</span></code></pre></div>
+<p>Now we can describe silly things like this <span class="math inline">\(newcalc(x, y) \rightarrow xy\_calc(xy\_calc(x, x), xy\_calc(y,y)))\)</span></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="index.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">new_calc</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## i a is 1 and a is 1</code></pre>
+<pre><code>## v result is 2</code></pre>
+<pre><code>## i b is 2 and b is 2</code></pre>
+<pre><code>## v result is 8</code></pre>
+<pre><code>## i xy_calc(a, a) is 2 and xy_calc(b, b) is 8</code></pre>
+<pre><code>## v result is 20</code></pre>
+<pre><code>## [1] 20</code></pre>
+</div>
+<div id="vectors-and-lists" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Vectors and Lists</h3>
+<p>The <code>c</code> function creates something called a vector, which is a <span class="math inline">\(1\)</span> dimensional matrix or table. Vectors are the singular columns or rows in a table. They do not mix types. The types you will work with are primarily logical, integer, double, character, list, NULL, closure (function).</p>
+<p>There are two functions that we should get familiar with first, but let’s go with the one I think you will use more of the two, though both <code>list</code> and <code>c</code> will be functions you use daily.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="index.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">integer =</span> 1L, <span class="at">double =</span> <span class="dv">1</span>, <span class="at">bool =</span> <span class="cn">TRUE</span>, <span class="at">character =</span> <span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<pre><code>##   integer    double      bool character 
+##       &quot;1&quot;       &quot;1&quot;    &quot;TRUE&quot;       &quot;a&quot;</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="index.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">integer =</span> 1L, <span class="at">double =</span> <span class="dv">1</span>, <span class="at">bool =</span> <span class="cn">TRUE</span>, <span class="at">character =</span> <span class="st">&#39;a&#39;</span>)</span></code></pre></div>
+<pre><code>## $integer
+## [1] 1
+## 
+## $double
+## [1] 1
+## 
+## $bool
+## [1] TRUE
+## 
+## $character
+## [1] &quot;a&quot;</code></pre>
+</div>
+<div id="data.frame-and-tibble" class="section level3" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> data.frame and tibble</h3>
+<p>The table below has 336,776 rows. Get used to looking at data in a different way. We’re not in Excel anymore and sometimes it makes people feel funny about not being able to “see” their data. When I say see, I simply mean is that look at the data below. This is a two dimensional table called a dataframe or tibble. A dataframe is a special form of a list, that requires each element be atomic (of one type) and of equal length. We can see this is true by looking at the output below.</p>
+<pre><code>## Rows: 336,776
+## Columns: 19
+## $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2~
+## $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1~
+## $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, ~
+## $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, ~
+## $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1~
+## $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849,~
+## $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851,~
+## $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -1~
+## $ carrier        &lt;chr&gt; &quot;UA&quot;, &quot;UA&quot;, &quot;AA&quot;, &quot;B6&quot;, &quot;DL&quot;, &quot;UA&quot;, &quot;B6&quot;, &quot;EV&quot;, &quot;B6&quot;, &quot;~
+## $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 4~
+## $ tailnum        &lt;chr&gt; &quot;N14228&quot;, &quot;N24211&quot;, &quot;N619AA&quot;, &quot;N804JB&quot;, &quot;N668DN&quot;, &quot;N394~
+## $ origin         &lt;chr&gt; &quot;EWR&quot;, &quot;LGA&quot;, &quot;JFK&quot;, &quot;JFK&quot;, &quot;LGA&quot;, &quot;EWR&quot;, &quot;EWR&quot;, &quot;LGA&quot;,~
+## $ dest           &lt;chr&gt; &quot;IAH&quot;, &quot;IAH&quot;, &quot;MIA&quot;, &quot;BQN&quot;, &quot;ATL&quot;, &quot;ORD&quot;, &quot;FLL&quot;, &quot;IAD&quot;,~
+## $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 1~
+## $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, ~
+## $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6~
+## $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0~
+## $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0~</code></pre>
+<p>There are <span class="math inline">\(19*336,776\)</span> cells within this table because there are <span class="math inline">\(19\)</span> vectors (columns) of length <span class="math inline">\(336,776\)</span>. Each element in the vector is one instance of a string, a number, a date, etc. And each type has functions that can operate on it, in a repeatable way. This is why each column (vector) is of one type, either <code>int</code>, <code>dbl</code>, <code>chr</code>, or <code>dttm</code>. There are other types in R, but we will be sticking to these for now. <code>int</code> is a special form of number called an integer - 1, 2, -1231, etc. <code>dbl</code> stands for double, a number which can contain decimal values i.e, 1.3. Not everything needs to be double, because an integer takes less memory in your computer to store. Don’t get too caught up on whether or not something should be an integer or double and generally speaking you wont consciously make a choice.</p>
+<p>If we were to write by hand the expression we created, it would be</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="index.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cli)</span>
+<span id="cb23-2"><a href="index.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="index.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Same as f(x) = 2x + 3</span></span>
+<span id="cb23-4"><a href="index.html#cb23-4" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span>  <span class="cf">function</span>(x) {</span>
+<span id="cb23-5"><a href="index.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x <span class="sc">*</span> x</span>
+<span id="cb23-6"><a href="index.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  x</span>
+<span id="cb23-7"><a href="index.html#cb23-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-8"><a href="index.html#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="index.html#cb23-9" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">x=</span><span class="cn">NULL</span>, <span class="at">y=</span><span class="cn">NULL</span>) {</span>
+<span id="cb23-10"><a href="index.html#cb23-10" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">min</span>(x, y)</span>
+<span id="cb23-11"><a href="index.html#cb23-11" aria-hidden="true" tabindex="-1"></a>  result</span>
+<span id="cb23-12"><a href="index.html#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-13"><a href="index.html#cb23-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-14"><a href="index.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">f</span>(<span class="fu">g</span>(<span class="dv">3</span>, <span class="dv">4</span>)))</span></code></pre></div>
+<pre><code>## [1] 36</code></pre>
+<p>We now have a way of describing inputs and output a little more clearly. Instead of writing, <span class="math inline">\((3 + min(3, 4)) * (3 + min(3, 4))\)</span> we can write <span class="math inline">\(f(g(3, 4))\)</span> or try new creations like <span class="math inline">\(z(x, y)=f(g(f(x), f(y)))\)</span> so <span class="math inline">\(z(1, 2)=f(g(f(1), f(2)))=f(g(1, 4))=f(2)=4\)</span>.<br />
+<br />
+Now just take this idea about functions and expand your definition of inputs and outputs to be any number, none or many, and of any type that R supports - character, numeric, date/time, data.frame or list - all of which we’ll cover.</p>
+</div>
+</div>
+<div id="solve-a-problem-in-r" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Solve a Problem in R</h2>
+<p>Let’s solve a problem using R. Suppose we have a friend that is interested in the current trend regarding COVID-19 cases. The first thing we will probably do is try to figure out an efficient and reliable way for importing Covid-19 data into our R session. Conveniently, the <a href="https://covid19datahub.io/articles/r.html"><code>COVID19</code></a> package allows us to pull the latest data without any hard work and consists of one function - <code>covid19</code>.</p>
+<div id="installing-packages" class="section level3" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Installing Packages</h3>
+<p>In your RStudio console, you can write the following to install the <code>COVID19</code> package using the <code>install.packages</code> function. If you are interested in learning more about this function, you can write <code>?install.packages</code> in your console and the documentation for the function will appear.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="index.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For help menu, uncomment next line</span></span>
+<span id="cb25-2"><a href="index.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ?install.packages </span></span>
+<span id="cb25-3"><a href="index.html#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="index.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If the package is not yet installed, you can install it by passing </span></span>
+<span id="cb25-5"><a href="index.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># a string with the package name to the `install.packages` function</span></span>
+<span id="cb25-6"><a href="index.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="at">pkgs =</span> <span class="fu">c</span>(<span class="st">&#39;COVID19&#39;</span>))</span></code></pre></div>
+</div>
+<div id="available-packages-on-cran" class="section level3" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Available Packages on CRAN</h3>
+<p>For a full list of what packages are available through the <code>install.packages</code> function, please check out the <a href="https://cran.r-project.org/web/packages/index.html">Contributed Packages</a> page at CRAN or scrape it yourself.<br />
+</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="index.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb26-2"><a href="index.html#cb26-2" aria-hidden="true" tabindex="-1"></a>cran_packages <span class="ot">&lt;-</span> <span class="st">&#39;https://cran.r-project.org/web/packages/available_packages_by_date.html&#39;</span></span>
+<span id="cb26-3"><a href="index.html#cb26-3" aria-hidden="true" tabindex="-1"></a>package_data <span class="ot">&lt;-</span> <span class="fu">html_table</span>(<span class="fu">html_element</span>(<span class="fu">read_html</span>(cran_packages), <span class="st">&#39;table&#39;</span>))</span>
+<span id="cb26-4"><a href="index.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(package_data)</span></code></pre></div>
+<pre><code>## # A tibble: 18,500 x 3
+##    Date       Package         Title                                             
+##    &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;                                             
+##  1 2021-11-25 aMNLFA          Automated Moderated Nonlinear Factor Analysis Usi~
+##  2 2021-11-25 audio           Audio Interface for R                             
+##  3 2021-11-25 boot.pval       Bootstrap p-Values                                
+##  4 2021-11-25 bootUR          Bootstrap Unit Root Tests                         
+##  5 2021-11-25 CALIBERrfimpute Multiple Imputation Using MICE and Random Forest  
+##  6 2021-11-25 filearray       File-Backed Array for Out-of-Memory Computation   
+##  7 2021-11-25 gamlss.foreach  Parallel Computations for Distributional Regressi~
+##  8 2021-11-25 ggquiver        Quiver Plots for &#39;ggplot2&#39;                        
+##  9 2021-11-25 ICSKAT          Interval-Censored Sequence Kernel Association Test
+## 10 2021-11-25 mapscanner      Print Maps, Draw on Them, Scan Them Back in       
+## # ... with 18,490 more rows</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="index.html#cb28-1" aria-hidden="true" tabindex="-1"></a>n_packages <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(package_data<span class="sc">$</span>Package))</span>
+<span id="cb28-2"><a href="index.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cli_alert_info</span>(<span class="st">&#39;There are {n_packages} packages on CRAN&#39;</span>)</span></code></pre></div>
+<pre><code>## i There are 18500 packages on CRAN</code></pre>
+</div>
+<div id="using-functions-to-solve-a-problem" class="section level3" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Using Functions to Solve a Problem</h3>
+<p>The code below consists of three different functions. The first two are <code>library</code> and <code>covid19</code>, but the third is hidden - it’s actually the arrow, <code>&lt;-</code> if you execute <code>`&lt;-`(a, 1)</code> the output of the function actually creates the variable <code>a</code> within your session! <em>Functions</em> are spaces for stuff to happen. Functions help us make common procedures repeatable. By creating a function with a particular name and inputs, we can get some sort of useful (or not useful, the world’s your oyster) output.</p>
+<p>In this case, <code>library</code> loads packages from a folder in the R environment called library. You can see which ones your R environment knows about by running the function <code>.libPaths()</code>. The dot in front of <code>.libPaths()</code> just means that the author intended it to be hidden, which doesn’t really mean much to us. When you run <code>install.packages</code> that code is at a path in the <code>.libPaths()</code> output.</p>
+<p><code>covid19</code> is a function from the <code>COVID19</code> package, and would only be available after executing <code>library(COVID19)</code> or if <code>library(COVID19)</code> is omitted, by pulling it from the package namespace directly by preceding the function with the package name and two colons like so: <code>COVID19::covid19</code>. Generally speaking, you simply use <code>library</code> because it reduces the amount of text on the page.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="index.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-2"><a href="index.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb30-3"><a href="index.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(COVID19)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="index.html#cb31-1" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">covid19</span>(</span>
+<span id="cb31-2"><a href="index.html#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">country =</span> <span class="st">&#39;United States&#39;</span>, </span>
+<span id="cb31-3"><a href="index.html#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">start =</span> <span class="st">&#39;2021-01-01&#39;</span>, </span>
+<span id="cb31-4"><a href="index.html#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">end =</span> <span class="st">&quot;2021-11-21&quot;</span>,</span>
+<span id="cb31-5"><a href="index.html#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb31-6"><a href="index.html#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">level =</span> <span class="dv">2</span></span>
+<span id="cb31-7"><a href="index.html#cb31-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-8"><a href="index.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(covid_data)</span></code></pre></div>
+<pre><code>## Rows: 18,200
+## Columns: 47
+## $ id                                  &lt;chr&gt; &quot;10b692cc&quot;, &quot;10b692cc&quot;, &quot;10b692cc&quot;~
+## $ date                                &lt;date&gt; 2021-01-01, 2021-01-02, 2021-01-0~
+## $ confirmed                           &lt;int&gt; 122, 122, 122, 122, 122, 124, 125,~
+## $ deaths                              &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2~
+## $ recovered                           &lt;int&gt; 29, 29, 29, 29, 29, 29, 29, 29, 29~
+## $ tests                               &lt;int&gt; 27102, 27132, 27143, 27419, 27525,~
+## $ vaccines                            &lt;int&gt; 3052, 3052, 3052, 3094, 3094, 3105~
+## $ people_vaccinated                   &lt;int&gt; 3051, 3051, 3051, 3093, 3093, 3104~
+## $ people_fully_vaccinated             &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 95, 181, 3~
+## $ hosp                                &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ icu                                 &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ vent                                &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ school_closing                      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ workplace_closing                   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ cancel_events                       &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ gatherings_restrictions             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ transport_closing                   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ stay_home_restrictions              &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ internal_movement_restrictions      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ international_movement_restrictions &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ information_campaigns               &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ testing_policy                      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ contact_tracing                     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ facial_coverings                    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ vaccination_policy                  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ elderly_people_protection           &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ government_response_index           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ stringency_index                    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ containment_health_index            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ economic_support_index              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ administrative_area_level           &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2~
+## $ administrative_area_level_1         &lt;chr&gt; &quot;United States&quot;, &quot;United States&quot;, ~
+## $ administrative_area_level_2         &lt;chr&gt; &quot;Northern Mariana Islands&quot;, &quot;North~
+## $ administrative_area_level_3         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ latitude                            &lt;dbl&gt; 14.15569, 14.15569, 14.15569, 14.1~
+## $ longitude                           &lt;dbl&gt; 145.2119, 145.2119, 145.2119, 145.~
+## $ population                          &lt;int&gt; 55144, 55144, 55144, 55144, 55144,~
+## $ iso_alpha_3                         &lt;chr&gt; &quot;USA&quot;, &quot;USA&quot;, &quot;USA&quot;, &quot;USA&quot;, &quot;USA&quot;,~
+## $ iso_alpha_2                         &lt;chr&gt; &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;, &quot;US&quot;~
+## $ iso_numeric                         &lt;int&gt; 840, 840, 840, 840, 840, 840, 840,~
+## $ iso_currency                        &lt;chr&gt; &quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;,~
+## $ key_local                           &lt;chr&gt; &quot;69&quot;, &quot;69&quot;, &quot;69&quot;, &quot;69&quot;, &quot;69&quot;, &quot;69&quot;~
+## $ key_google_mobility                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ key_apple_mobility                  &lt;chr&gt; &quot;Northern Mariana Islands&quot;, &quot;North~
+## $ key_jhu_csse                        &lt;chr&gt; &quot;US69&quot;, &quot;US69&quot;, &quot;US69&quot;, &quot;US69&quot;, &quot;U~
+## $ key_nuts                            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA~
+## $ key_gadm                            &lt;chr&gt; &quot;MNP&quot;, &quot;MNP&quot;, &quot;MNP&quot;, &quot;MNP&quot;, &quot;MNP&quot;,~</code></pre>
+<p>Let’s look at what happened - we passed a few inputs and received a dataframe. A dataframe is a list with the requirement that all elements of the list are atomic vectors of equal length. Let’s look at what that means.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="index.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(covid_data, typeof)</span></code></pre></div>
+<pre><code>##                                  id                                date 
+##                         &quot;character&quot;                            &quot;double&quot; 
+##                           confirmed                              deaths 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                           recovered                               tests 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                            vaccines                   people_vaccinated 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##             people_fully_vaccinated                                hosp 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                                 icu                                vent 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                      school_closing                   workplace_closing 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                       cancel_events             gatherings_restrictions 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                   transport_closing              stay_home_restrictions 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##      internal_movement_restrictions international_movement_restrictions 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##               information_campaigns                      testing_policy 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                     contact_tracing                    facial_coverings 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##                  vaccination_policy           elderly_people_protection 
+##                           &quot;integer&quot;                           &quot;integer&quot; 
+##           government_response_index                    stringency_index 
+##                            &quot;double&quot;                            &quot;double&quot; 
+##            containment_health_index              economic_support_index 
+##                            &quot;double&quot;                            &quot;double&quot; 
+##           administrative_area_level         administrative_area_level_1 
+##                           &quot;integer&quot;                         &quot;character&quot; 
+##         administrative_area_level_2         administrative_area_level_3 
+##                         &quot;character&quot;                         &quot;character&quot; 
+##                            latitude                           longitude 
+##                            &quot;double&quot;                            &quot;double&quot; 
+##                          population                         iso_alpha_3 
+##                           &quot;integer&quot;                         &quot;character&quot; 
+##                         iso_alpha_2                         iso_numeric 
+##                         &quot;character&quot;                           &quot;integer&quot; 
+##                        iso_currency                           key_local 
+##                         &quot;character&quot;                         &quot;character&quot; 
+##                 key_google_mobility                  key_apple_mobility 
+##                         &quot;character&quot;                         &quot;character&quot; 
+##                        key_jhu_csse                            key_nuts 
+##                         &quot;character&quot;                           &quot;logical&quot; 
+##                            key_gadm 
+##                         &quot;character&quot;</code></pre>
+<p>When you have a list of things, you can apply a function to each item in the list. So in the list above, we have 47 atomic vectors. What does that mean? An atomic vector is like a list, but it has to contain the same thing in each cell.</p>
+<p><a href="https://stackoverflow.com/questions/58568392/how-do-i-know-a-function-or-an-operation-in-r-is-vectorized#:~:text=To%20identify%20if%20an%20R%20object%20is%20a%20vector%20%2C%20I,a%20vector%20or%20False%20otherwise.">How do I know if a function is vectorized</a><br />
+<a href="https://www.noamross.net/archives/2014-04-16-vectorization-in-r-why/">Vectorization in R</a></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="index.html#cb35-1" aria-hidden="true" tabindex="-1"></a>vector_example <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="st">&#39;a&#39;</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb35-2"><a href="index.html#cb35-2" aria-hidden="true" tabindex="-1"></a>list_example <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">&#39;a&#39;</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb35-3"><a href="index.html#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="index.html#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(vector_example, typeof)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot; &quot;character&quot; &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="index.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(list_example, typeof)</span></code></pre></div>
+<pre><code>## [1] &quot;double&quot;    &quot;character&quot; &quot;logical&quot;</code></pre>
+<p>With the knowledge of vectors and lists, what can we do? Well, the first thing I notice is that some of the vectors are completely <code>NA</code>. Let’s check the number of NA values in each vector.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="index.html#cb39-1" aria-hidden="true" tabindex="-1"></a>all_na <span class="ot">&lt;-</span> <span class="cf">function</span>(item) {</span>
+<span id="cb39-2"><a href="index.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="fu">is.na</span>(item))<span class="sc">==</span><span class="fu">length</span>(item) </span>
+<span id="cb39-3"><a href="index.html#cb39-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-4"><a href="index.html#cb39-4" aria-hidden="true" tabindex="-1"></a>covid_data <span class="ot">&lt;-</span> <span class="fu">discard</span>(covid_data, all_na)</span>
+<span id="cb39-5"><a href="index.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(covid_data)</span></code></pre></div>
+<pre><code>##         id       date confirmed deaths recovered tests vaccines
+## 1 10b692cc 2021-01-01       122      2        29 27102     3052
+## 2 10b692cc 2021-01-02       122      2        29 27132     3052
+## 3 10b692cc 2021-01-03       122      2        29 27143     3052
+## 4 10b692cc 2021-01-04       122      2        29 27419     3094
+## 5 10b692cc 2021-01-05       122      2        29 27525     3094
+## 6 10b692cc 2021-01-06       124      2        29 27538     3105
+##   people_vaccinated people_fully_vaccinated hosp icu vent school_closing
+## 1              3051                       1   NA  NA   NA             NA
+## 2              3051                       1   NA  NA   NA             NA
+## 3              3051                       1   NA  NA   NA             NA
+## 4              3093                       1   NA  NA   NA             NA
+## 5              3093                       1   NA  NA   NA             NA
+## 6              3104                       1   NA  NA   NA             NA
+##   workplace_closing cancel_events gatherings_restrictions transport_closing
+## 1                NA            NA                      NA                NA
+## 2                NA            NA                      NA                NA
+## 3                NA            NA                      NA                NA
+## 4                NA            NA                      NA                NA
+## 5                NA            NA                      NA                NA
+## 6                NA            NA                      NA                NA
+##   stay_home_restrictions internal_movement_restrictions
+## 1                     NA                             NA
+## 2                     NA                             NA
+## 3                     NA                             NA
+## 4                     NA                             NA
+## 5                     NA                             NA
+## 6                     NA                             NA
+##   international_movement_restrictions information_campaigns testing_policy
+## 1                                  NA                    NA             NA
+## 2                                  NA                    NA             NA
+## 3                                  NA                    NA             NA
+## 4                                  NA                    NA             NA
+## 5                                  NA                    NA             NA
+## 6                                  NA                    NA             NA
+##   contact_tracing facial_coverings vaccination_policy elderly_people_protection
+## 1              NA               NA                 NA                        NA
+## 2              NA               NA                 NA                        NA
+## 3              NA               NA                 NA                        NA
+## 4              NA               NA                 NA                        NA
+## 5              NA               NA                 NA                        NA
+## 6              NA               NA                 NA                        NA
+##   government_response_index stringency_index containment_health_index
+## 1                        NA               NA                       NA
+## 2                        NA               NA                       NA
+## 3                        NA               NA                       NA
+## 4                        NA               NA                       NA
+## 5                        NA               NA                       NA
+## 6                        NA               NA                       NA
+##   economic_support_index administrative_area_level administrative_area_level_1
+## 1                     NA                         2               United States
+## 2                     NA                         2               United States
+## 3                     NA                         2               United States
+## 4                     NA                         2               United States
+## 5                     NA                         2               United States
+## 6                     NA                         2               United States
+##   administrative_area_level_2 latitude longitude population iso_alpha_3
+## 1    Northern Mariana Islands 14.15569  145.2119      55144         USA
+## 2    Northern Mariana Islands 14.15569  145.2119      55144         USA
+## 3    Northern Mariana Islands 14.15569  145.2119      55144         USA
+## 4    Northern Mariana Islands 14.15569  145.2119      55144         USA
+## 5    Northern Mariana Islands 14.15569  145.2119      55144         USA
+## 6    Northern Mariana Islands 14.15569  145.2119      55144         USA
+##   iso_alpha_2 iso_numeric iso_currency key_local key_google_mobility
+## 1          US         840          USD        69                &lt;NA&gt;
+## 2          US         840          USD        69                &lt;NA&gt;
+## 3          US         840          USD        69                &lt;NA&gt;
+## 4          US         840          USD        69                &lt;NA&gt;
+## 5          US         840          USD        69                &lt;NA&gt;
+## 6          US         840          USD        69                &lt;NA&gt;
+##         key_apple_mobility key_jhu_csse key_gadm
+## 1 Northern Mariana Islands         US69      MNP
+## 2 Northern Mariana Islands         US69      MNP
+## 3 Northern Mariana Islands         US69      MNP
+## 4 Northern Mariana Islands         US69      MNP
+## 5 Northern Mariana Islands         US69      MNP
+## 6 Northern Mariana Islands         US69      MNP</code></pre>
 
+</div>
+</div>
 </div>
             </section>
 
@@ -264,7 +613,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 
-<a href="a-tour-of-r.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="initial-setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

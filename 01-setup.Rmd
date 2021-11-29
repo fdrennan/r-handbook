@@ -1,0 +1,40 @@
+
+
+# Initial Setup
+
+[Book Outline](https://hackmd.io/vGRGEPo8QQyiG8gecWv71g)
+
+-   [Install R](https://cran.r-project.org/)
+
+-   [Install R Studio](https://www.rstudio.com/products/rstudio/download/)
+
+-   [Windows Only: Install RTools](https://cran.r-project.org/bin/windows/Rtools/)
+
+    -   When installed, run in the RStudio Console: `write('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', file = "~/.Renviron", append = TRUE)`
+
+-   [Windows Only: Install WSL2](https://www.omgubuntu.co.uk/how-to-install-wsl2-on-windows-10)
+
+    -   Computer should be completely updated before install.
+
+-   [Install Git](https://git-scm.com/downloads)
+
+-   [Create Github Account](https://github.com/)
+
+-   [Fork r-handbook](https://github.com/fdrennan/r-handbook)
+
+-   [Install Docker and Docker Compose](https://docs.docker.com/get-docker/)
+
+-   [Create AWS Account](https://aws.amazon.com/)
+
+    -   Billing will be discussed in the course, but don't expect to pay much - i.e., 10-20 dollars a month for high course activity.
+    -   Remember to `stop` EC2 servers when we begin using them. AWS is polite about your first few refund requests.
+
+-   [Create Reddit Account](reddit.com)
+
+    -   [Follow Instructions here](https://towardsdatascience.com/how-to-use-the-reddit-api-in-python-5e05ddfd1e5c)
+
+Make sure you install the [`tidyverse`](https://www.tidyverse.org/) packages. Update to renv later.
+
+```{r eval=FALSE}
+install.packages('tidyverse')
+```
